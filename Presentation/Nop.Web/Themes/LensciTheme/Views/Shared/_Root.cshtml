@@ -16,6 +16,9 @@
     <div class="header-menu">
         @await Component.InvokeAsync(typeof(TopMenuViewComponent))
     </div>
+      <div class="search-box store-search-box" style="display:none;">
+    @await Component.InvokeAsync(typeof(SearchBoxViewComponent))
+    </div>
     <div class="master-wrapper-content" id="main" role="main">
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ContentBefore })
 
