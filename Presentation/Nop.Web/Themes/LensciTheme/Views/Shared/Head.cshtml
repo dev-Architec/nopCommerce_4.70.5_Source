@@ -1,0 +1,23 @@
+﻿@using Nop.Core
+
+@inject IWorkContext workContext
+
+@{
+    var supportRtl = (await workContext.GetWorkingLanguageAsync()).Rtl;
+
+    if (supportRtl)
+    {
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet" />
+     
+        NopHtml.AppendCssFileParts("~/Themes/LensciTheme/Content/css/styles.rtl.css");
+    }
+    else
+    {
+       
+        NopHtml.AppendCssFileParts("~/Themes/LensciTheme/Content/css/styles.css");
+    }
+
+   
+}

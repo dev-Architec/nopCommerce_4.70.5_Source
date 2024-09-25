@@ -1,0 +1,37 @@
+﻿
+
+<div id="header-banner" class="thumbnails js-thumbnails">
+    <ul class="thumbnails__list">
+        <li class="thumbnails__item section is-active" id="thumbnail1" role="button" tabindex="0">
+            <p>Shop With Confidence</p>
+        </li>
+        <li class="thumbnails__item section" id="thumbnail2" role="button" tabindex="0">
+            <p>Save Time &amp; Money</p>
+        </li>
+        <li class="thumbnails__item section" id="thumbnail3" role="button" tabindex="0">
+            <p>Simple &amp; Secure</p>
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const thumbnails = document.querySelectorAll('.thumbnails__item');
+        let currentIndex = 0; 
+
+        function showNextThumbnail() {
+            thumbnails.forEach(function (item) {
+                item.classList.remove('is-active');
+            });
+
+            currentIndex = (currentIndex + 1) % thumbnails.length;
+
+            thumbnails[currentIndex].classList.add('is-active');
+        }
+
+        setInterval(showNextThumbnail, 3000);
+    });
+
+</script>
