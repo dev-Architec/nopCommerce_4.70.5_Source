@@ -27,8 +27,6 @@
 }
 <div class="page home-page">
     <div class="page-body">
-     
-
         @{
             await Html.RenderPartialAsync("_HomeBadge");
         }
@@ -39,10 +37,9 @@
         @await Component.InvokeAsync(typeof(TopicBlockViewComponent), new { systemName = "HomepageText" })
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
         @await Component.InvokeAsync(typeof(HomepageCategoriesViewComponent))
-      
-       
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })
         @await Component.InvokeAsync(typeof(HomepageProductsViewComponent))
+
         @{
             await Html.RenderPartialAsync("_Testimonials");
 
@@ -62,4 +59,3 @@
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBottom })
     </div>
 </div>
-

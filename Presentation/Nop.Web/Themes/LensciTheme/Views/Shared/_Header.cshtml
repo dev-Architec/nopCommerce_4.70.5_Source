@@ -1,4 +1,5 @@
 ﻿<div class="header">
+    <a class="skip" href="#main">@T("Header.SkipNavigation.Text")</a>
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HeaderBefore })
     <div class="header-upper">
         <div class="header-selectors-wrapper">
@@ -13,12 +14,13 @@
         </div>
     </div>
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HeaderMiddle })
-   @*  <div class="header-lower">
-        <div class="header-logo">
+    <div class="header-lower">
+      @*   <div class="header-logo">
             @await Component.InvokeAsync(typeof(LogoViewComponent))
+        </div> *@
+        <div class="search-box store-search-box">
+            @await Component.InvokeAsync(typeof(SearchBoxViewComponent))
         </div>
-       
-    </div> *@
+    </div>
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HeaderAfter })
 </div>
-
