@@ -2,7 +2,20 @@
   "InstalledPluginNames": [
     "Obsolete field, using only for compatibility"
   ],
-  "InstalledPlugins": [],
+  "InstalledPlugins": [
+    {
+      "SystemName": "Payments.CheckMoneyOrder",
+      "Version": "4.70.2"
+    },
+    {
+      "SystemName": "Shipping.FixedByWeightByTotal",
+      "Version": "4.70.7"
+    },
+    {
+      "SystemName": "Widgets.NivoSlider",
+      "Version": "4.70.2"
+    }
+  ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": []
