@@ -9213,3 +9213,72 @@ label, label + * {
   margin: 0;
 }
 
+/*Home manufacure
+*/
+
+
+.page.manufacturer-row-page {
+    padding: 20px;
+}
+
+.manufacturer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.manufacturer-box {
+    flex: 0 0 auto;
+    width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 15px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+
+    .manufacturer-box:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+.manufacturer-item {
+    text-align: center;
+}
+
+.manufacturer-title {
+    font-size: 12px; 
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+    .manufacturer-title a {
+        text-decoration: none;
+        color: #4ab2f1;
+        transition: color 0.3s ease;
+    }
+
+        .manufacturer-title a:hover,
+        .manufacturer-title a:focus {
+            color: #248ece;
+        }
+
+.manufacturer-picture {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+    .manufacturer-picture img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
+
+  /*  .manufacturer-picture:hover img {
+        transform: scale(1.05);
+    }*/
