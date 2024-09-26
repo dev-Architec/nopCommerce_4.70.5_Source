@@ -1693,137 +1693,160 @@ label, label + * {
     height: 20px !important;
     margin-right: 8px;
   }
-
 .item-grid:after {
-  content: "";
-  display: block;
-  clear: both;
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .item-box {
-  position: relative;
-  width: 100%;
-  float: left;
-  margin: 0 0 80px;
-  text-align: left;
+    position: relative;
+    width: 30%; /* Adjust the width for the card */
+    float: left;
+    margin: 20px;
+    text-align: left;
+    background-color: #fff; /* Card background */
+    border: 1px solid #ddd; /* Add border for card effect */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow: hidden;
+    transition: all 0.3s ease; /* Smooth hover effect */
 }
 
-  .item-box .picture {
-    z-index: 1;
-    background-color: #fff;
-    margin: 0 0 20px;
-  }
-
-    .item-box .picture a {
-      display: block;
-      position: relative;
+    .item-box:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
     }
 
-      .item-box .picture a:focus {
+    .item-box .picture {
+        position: relative;
+        background-color: #fff;
+        margin: 0;
+        border-bottom: 1px solid #ddd; /* Separate picture from details */
+    }
+
+        .item-box .picture a {
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .item-box .picture a:before {
+                content: "";
+                display: block;
+                padding-top: 75%; /* Maintain aspect ratio for image */
+            }
+
+            .item-box .picture a img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%; /* Ensure image fits within the container */
+                height: 100%;
+                object-fit: cover; /* Ensures image fits without distortion */
+                transition: all 0.3s ease;
+            }
+
+    .item-box:hover .picture a img {
         opacity: 0.85;
-      }
-
-      .item-box .picture a:before {
-        content: "";
-        display: block;
-        padding-top: 100%;
-      }
-
-      .item-box .picture a img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        max-width: 100%;
-        max-height: 100%;
-        margin: auto;
-        -webkit-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-        -webkit-transform: translateZ(0) scale(1.0, 1.0);
-      }
-
-  .item-box:hover .picture a img {
-    opacity: 0.85;
-  }
-
-  .item-box .details {
-    padding: 0 10px;
-  }
-
-  .item-box .product-title {
-    margin: 0 0 10px;
-    font-size: 17px;
-    line-height: 1.2;
-    font-weight: normal;
-    color: #4ab2f1;
-  }
-
-    .item-box .product-title a {
-      display: block;
     }
 
-      .item-box .product-title a:hover,
-      .item-box .product-title a:focus {
-        color: #248ece;
-      }
-
-  .item-box .sku {
-    margin: 0 0 15px;
-  }
-
-  .item-box .product-rating-box {
-    display: inline-block;
-    margin: 0 0 10px;
-  }
-
-  .item-box .rating {
-    background: url('../images/rating1.png') repeat-x;
-    width: 95px;
-    height: 14px;
-  }
-
-    .item-box .rating div {
-      background: url('../images/rating2.png') repeat-x;
-      height: 14px;
+    .item-box .details {
+        padding: 15px; /* Padding for card content */
     }
+
+    .item-box .product-title {
+        margin: 0 0 10px;
+        font-size: 18px; /* Slightly larger for card */
+        font-weight: bold;
+        color: #333; /* Darker text color */
+        text-align: center; /* Center product title */
+    }
+
+        .item-box .product-title a:hover,
+        .item-box .product-title a:focus {
+            color: #248ece;
+        }
+
+    .item-box .sku {
+        margin: 0 0 15px;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+    }
+
+    .item-box .product-rating-box {
+        display: inline-block;
+        margin: 0 0 10px;
+    }
+
+    .item-box .rating {
+        background: url('../images/rating1.png') repeat-x;
+        width: 95px;
+        height: 14px;
+        margin: 0 auto; /* Center rating box */
+    }
+
+        .item-box .rating div {
+            background: url('../images/rating2.png') repeat-x;
+            height: 14px;
+        }
 
 .product-grid .item-box .description:not([data-short-description]) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  margin: 0 0 15px;
-  height: 66px;
-  line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 0 0 15px;
+    height: auto; /* Allow auto height for cards */
+    line-height: 22px;
+    font-size: 14px;
+    color: #555;
 }
 
 .item-box .description[data-short-description] {
-  display: none;
+    display: none;
 }
 
 .item-box .description a {
-  display: block;
-  overflow: hidden;
+    display: block;
+    overflow: hidden;
 }
 
 .item-box .prices {
-  margin: 0 0 10px;
-  overflow: hidden;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 16px;
 }
 
 .item-box .old-price {
-  margin: 0 5px 0 0;
-  font-size: 16px;
-  color: #aaa;
-  text-decoration: line-through;
+    margin: 0 5px 0 0;
+    font-size: 14px;
+    color: #aaa;
+    text-decoration: line-through;
 }
 
 .item-box .actual-price {
-  margin: 0 5px 0 0;
-  font-size: 16px;
-  color: #666;
+    margin: 0 5px 0 0;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .item-box {
+        width: 48%; /* Adjust width for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .item-box {
+        width: 100%; /* Full width for mobile devices */
+    }
+}
+
 }
 
 .item-box .tax-shipping-info a {
