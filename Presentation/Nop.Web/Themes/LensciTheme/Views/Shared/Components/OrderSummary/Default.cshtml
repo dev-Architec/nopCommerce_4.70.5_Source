@@ -384,4 +384,8 @@
         </div>
     }
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentAfter, additionalData = Model })
+
+    @{
+        await Html.RenderPartialAsync("_CartBadge");
+    }
 </div>

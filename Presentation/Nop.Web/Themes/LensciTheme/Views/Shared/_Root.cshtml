@@ -31,7 +31,7 @@
         </div>
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ContentAfter })
     </div>
-     @{
+    @{
         await Html.RenderPartialAsync("_HelpContactInfo");
 
 

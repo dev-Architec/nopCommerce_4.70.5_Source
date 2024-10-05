@@ -163,10 +163,15 @@
                     @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecificationModel)
                     @await Html.PartialAsync("_ProductTags", Model.ProductTags)
                 </div>
+                @{
+                    await Html.RenderPartialAsync("_whyLensci");
+                }
                 @await Component.InvokeAsync(typeof(ProductsAlsoPurchasedViewComponent), new { productId = Model.Id })
                 @await Component.InvokeAsync(typeof(RelatedProductsViewComponent), new { productId = Model.Id })
             </div>
         </form>
+
+      
         <!--product reviews-->
         @if (Model.ProductReviewOverview.AllowCustomerReviews)
         {
