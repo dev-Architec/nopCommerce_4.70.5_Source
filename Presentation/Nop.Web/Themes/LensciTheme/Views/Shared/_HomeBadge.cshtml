@@ -1,6 +1,9 @@
 ﻿<div id="badges" class="badges-container">
-  
     <div class="badges-wrapper">
+        <div class="badges_nav">
+            <i class="fas fa-chevron-left arrow prev"></i>
+            <i class="fas fa-chevron-right arrow next"></i>
+        </div>
         <div class="badges-list">
             <div class="badge money-back">
                 <div class="fancybadges" data-height="300" data-width="800" data-url="/common/popups/pop_moneyBackGuarantee.asp">
@@ -15,11 +18,50 @@
                     <div class="badge-text">Hassle Free Returns</div>
                 </div>
             </div>
-
             <div class="badge customer-service">
-                <i class="fas fa-headset icon" aria-hidden="true" title="Customer Service 24/7"></i>
-                <div class="badge-text">Customer Service 24/7 <a id="live_chat_link" href="#" title="Live Chat" class="live-chat-link">Live Chat</a></div>
+                <div class="fancybadges">
+                    <i class="fas fa-headset icon" aria-hidden="true" title="Customer Service 24/7"></i>
+                    <div class="badge-text">Customer Service 24/7 <a id="live_chat_link" href="#" title="Live Chat" class="live-chat-link">Live Chat</a></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var currentIndex = 0;
+        var totalBadges = $('.badges-list .badge').length;
+
+        function moveSlider(index) {
+            var badgeWidth = $('.badges-list .badge').outerWidth();
+            var offset = badgeWidth * index;
+            $('.badges-list').css('transform', 'translateX(-' + offset + 'px)');
+        }
+
+        // Click on next arrow
+        $('.badges_nav .next').on('click', function () {
+            if (currentIndex < totalBadges - 1) {
+                currentIndex++;
+                moveSlider(currentIndex);
+            }
+        });
+
+        // Click on previous arrow
+        $('.badges_nav .prev').on('click', function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveSlider(currentIndex);
+            }
+        });
+
+        // Reset to first slide when resizing to mobile layout
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) {
+                currentIndex = 0;
+                moveSlider(currentIndex);
+            }
+        });
+    });
+
+</script>

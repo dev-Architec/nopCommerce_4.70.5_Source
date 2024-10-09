@@ -16,10 +16,20 @@
     <div class="header-menu">
         @await Component.InvokeAsync(typeof(TopMenuViewComponent))
     </div>
-      <div class="search-box store-search-box" style="display:none;">
-    @await Component.InvokeAsync(typeof(SearchBoxViewComponent))
+     
+    <div id="sub_bar">
+        <div class="container">
+             <div class="search-box store-search-box" style="display:none;">
+                @await Component.InvokeAsync(typeof(SearchBoxViewComponent))
+              </div>
+               @{
+                    await Html.RenderPartialAsync("_HomeBadge");
+                }
+        </div>
     </div>
-    <div class="master-wrapper-content" id="main" role="main">
+   
+
+    <div class="master-wrapper" id="main" role="main">
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ContentBefore })
 
         @if (IsSectionDefined("Breadcrumb"))

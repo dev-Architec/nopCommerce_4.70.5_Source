@@ -27,9 +27,7 @@
 }
 <div class="page home-page">
     <div class="page-body">
-        @{
-            await Html.RenderPartialAsync("_HomeBadge");
-        }
+        
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageTop })
         @{
             await Html.RenderPartialAsync("_HeaderBanner");
