@@ -8,6 +8,18 @@
 
 <div class="footer">
     <div class="footer-upper">
+        <div class="footer-block Logo">
+            <div class="title">
+                @await Component.InvokeAsync(typeof(LogoViewComponent))
+            </div>
+            <div class="social">
+                <div class="title">
+                    <strong>@T("Footer.FollowUs")</strong>
+                </div>
+                @await Component.InvokeAsync(typeof(SocialButtonsViewComponent))
+            </div>
+           
+        </div>
         <div class="footer-block information">
             <div class="title">
                 <strong>@T("Footer.Information")</strong>
@@ -105,15 +117,17 @@
                 }
             </ul>
         </div>
-        <div class="footer-block follow-us">
-            <div class="social">
-                <div class="title">
-                    <strong>@T("Footer.FollowUs")</strong>
-                </div>
-                @await Component.InvokeAsync(typeof(SocialButtonsViewComponent))
+        <div class="footer-block OnlinePayment">
+            <div class="title">
+               <p>Online 24/7</p>
             </div>
-            @await Component.InvokeAsync(typeof(NewsletterBoxViewComponent))
+
         </div>
+        <div class="footer-block follow-us">
+            @await Component.InvokeAsync(typeof(NewsletterBoxViewComponent))
+
+        </div>
+
     </div>
     <div class="footer-lower">
         <div class="footer-info">
