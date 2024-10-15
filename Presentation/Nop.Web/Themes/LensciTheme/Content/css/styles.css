@@ -8051,13 +8051,25 @@ label, label + * {
   /*** NAVIGATION ***/
 
 
-  .header-menu {
-    position: relative;
-    z-index: 5;
-    padding: 15px 15px 0px;
-    text-align: center;
-    background-color: #CC0005;
-  }
+    .header-menu {
+        position: sticky;
+        top: -50px;
+        z-index: 5;
+        padding: 15px 15px 0px;
+        text-align: center;
+        background-color: #CC0005;
+        transition: top 0.3s ease-in-out, background-color 0.3s ease; 
+    }
+
+        .header-menu.scrolled {
+            top: 0; 
+            background-color: #CC0005; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+
+
+       
+
 
   .menu-toggle,
   .sublist-toggle {
