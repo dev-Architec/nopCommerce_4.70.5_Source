@@ -12,7 +12,7 @@
     NopHtml.AppendPageCssClassParts("html-login-page");
 
     //register URL with return URL (if specified)
-     var registerUrl = Url.RouteUrl("Register", new { returnUrl = this.Context.Request.Query["returnUrl"] }, webHelper.GetCurrentRequestProtocol());
+    var registerUrl = Url.RouteUrl("Register", new { returnUrl = this.Context.Request.Query["returnUrl"] }, webHelper.GetCurrentRequestProtocol());
 }
 <div class="page login-page">
     <div class="page-title">
@@ -50,8 +50,17 @@
             }
             else
             {
-                @await Component.InvokeAsync(typeof(RegisterViewComponent))
-
+                <div class="new-wrapper register-block">
+                    <div class="title">
+                        <strong>@T("Account.Login.NewCustomer")</strong>
+                    </div>
+                    <div class="text">
+                        @T("Account.Login.NewCustomerText")
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="button-1 register-button" onclick="location.href='@registerUrl'">@T("Account.Register")</button>
+                    </div>
+                </div>
             }
             <div class="returning-wrapper fieldset">
                 <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">

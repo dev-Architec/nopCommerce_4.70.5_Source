@@ -205,3 +205,5 @@ src/Tests/Nop.Tests/Connections.resx
 *.dll
 /Presentation/Nop.Web/Plugins
 *.dll
+Presentation/Nop.Web/Plugins/Misc.Brevo/Nop.Plugin.Misc.Brevo.dll
+*.dll
