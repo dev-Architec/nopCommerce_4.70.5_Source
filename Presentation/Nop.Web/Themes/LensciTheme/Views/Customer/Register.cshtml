@@ -10,8 +10,8 @@
 }
 
 <div class="page registration-page">
-    <div class="page-title">
-        <h1>@T("Account.Register")</h1>
+    <div class="title">
+        <h2>@T("Account.Register")</h2>
     </div>
     <div class="page-body">
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.RegisterTop, additionalData = Model })

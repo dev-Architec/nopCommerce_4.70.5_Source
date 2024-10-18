@@ -57,12 +57,12 @@
                 <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
                     <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
                     <div class="title">
-                        <strong>@T("Account.Login.ReturningCustomer")</strong>
+                        <h2>@T("Account.Login.ReturningCustomer")</h2>
                     </div>
                     <div class="form-fields">
                         @if (Model.UsernamesEnabled)
                         {
-                            <div class="inputs">
+                            <div class="form-input">
                                 <label asp-for="Username" asp-postfix=":"></label>
                                 <input asp-for="Username" class="username" autofocus="autofocus" />
                                 <span asp-validation-for="Username"></span>
@@ -70,18 +70,18 @@
                         }
                         else
                         {
-                            <div class="inputs">
+                            <div class="form-input">
                                 <label asp-for="Email" asp-postfix=":"></label>
                                 <input asp-for="Email" class="email" autofocus="autofocus" />
                                 <span asp-validation-for="Email"></span>
                             </div>
                         }
-                        <div class="inputs">
+                        <div class="form-input">
                             <label asp-for="Password" asp-postfix=":"></label>
                             <input asp-for="Password" class="password" />
                             <span asp-validation-for="Password"></span>
                         </div>
-                        <div class="inputs reversed">
+                        <div class="form-input reversed">
                             <input asp-for="RememberMe" />
                             <label asp-for="RememberMe"></label>
                             <span class="forgot-password">
