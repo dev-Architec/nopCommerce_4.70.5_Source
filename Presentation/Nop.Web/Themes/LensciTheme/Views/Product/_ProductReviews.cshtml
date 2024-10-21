@@ -3,31 +3,69 @@
 @inject Nop.Services.Html.IHtmlFormatter htmlFormatter
 
 <div class="page product-reviews">
+
+    <div id="review_summary">
+        <div class="overview"> 
+            <h2 class="item"><span class="fn">1-Day Acuvue Moist for Astigmatism</span> Reviews</h2>
+            <div class="star_rating">
+                <div class="divider"></div>
+                <div class="text">
+                    <span>Rating: 9.2/10&nbsp;&nbsp;346 Reviews</span>
+                </div>
+                <div class="review_text" id="review_text62990">
+                    <div class="divider"></div>
+                        <a class="write_review" href="#" onclick="javascript:getStyleObject('review_product62990').display='block';getStyleObject('review_text62990').display='none';getStyleObject('review_cancel').display='block'; return false;">
+                            Write an online review for 1-Day Acuvue Moist for Astigmatism 90PK Contact Lenses 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductReviewsPageTop, additionalData = Model })
     @if (Model.Items.Count > 0)
     {
         <div class="product-review-list">
             <a name="productreviews"></a>
-            <div class="title">
+            @* <div class="title">
                 <strong>@T("Reviews.ExistingReviews")</strong>
-            </div>
+            </div> *@
             @foreach (var review in Model.Items)
             {
                 var ratingPercent = review.Rating * 20;
                 <div class="product-review-item">
                     <div class="review-item-head">
-                        <div class="review-title">
-                            <strong>@review.Title</strong>
-                        </div>
-                        <div class="product-review-box">
+                         <div class="product-review-box">
                             <div class="rating">
-                                <div style="width: @(ratingPercent)%">
-                                    @review.Rating
-                                </div>
+                                <div style="width: @(ratingPercent)%"></div>
                             </div>
+                           @*  @review.Rating *@
+                        </div>
+                         <span class="user">
+                                 @* <label>@T("Reviews.From"):</label> *@
+                                @if (review.AllowViewingProfiles)
+                                {
+                                    <a class="n" href="@Url.RouteUrl("CustomerProfile", new { id = review.CustomerId })">@(review.CustomerName)</a>
+                                }
+                                else
+                                {
+                                    <span class="n">@review.CustomerName</span>
+                                }
+                        </span>
+                       
+                        <div class="review-info">                           
+                           @*  <span class="separator">|</span> *@
+                            <span class="date">
+                                @* <label>@T("Reviews.Date"):</label> *@
+                                <span>@review.WrittenOnStr</span>
+                            </span>
                         </div>
                     </div>
                     <div class="review-content">
+                        <div class="review-title">
+                            <strong>@review.Title</strong>
+                        </div>
                         <div class="review-text">
                             @if (!string.IsNullOrEmpty(review.CustomerAvatarUrl))
                             {
@@ -54,34 +92,10 @@
                             <div class="review-type-rating-ext">
                                 <div class="review-title">
                                     <i>@reviewType.Name</i>
-                                </div>
-                                <div class="product-review-box">
-                                    <div class="rating">
-                                        <div style="width: @(ratingExtPercent)%">
-                                            @reviewType.Rating
-                                        </div>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
                         }
-                        <div class="review-info">
-                            <span class="user">
-                                <label>@T("Reviews.From"):</label>
-                                @if (review.AllowViewingProfiles)
-                                {
-                                    <a href="@Url.RouteUrl("CustomerProfile", new { id = review.CustomerId })">@(review.CustomerName)</a>
-                                }
-                                else
-                                {
-                                    <span>@review.CustomerName</span>
-                                }
-                            </span>
-                            <span class="separator">|</span>
-                            <span class="date">
-                                <label>@T("Reviews.Date"):</label>
-                                <span>@review.WrittenOnStr</span>
-                            </span>
-                        </div>
+                        
                         @await Html.PartialAsync("_ProductReviewHelpfulness", review.Helpfulness)
                         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductReviewsPageInsideReview, additionalData = review })
                         @if (!string.IsNullOrEmpty(review.ReplyText))

@@ -4,6 +4,20 @@
 <script asp-exclude-from-bundle="true" src="~/lib_npm/magnific-popup/jquery.magnific-popup.min.js" asp-location="Footer"></script>
 
 <div class="picture-gallery">
+    <div class="product-name">
+        <h1>
+            @Model.Name
+        </h1>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ShortDescription))
+    {
+        <div class="short-description">
+            @Html.Raw(Model.ShortDescription)
+        </div>
+    }
+
+    @await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers)
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsBeforePictures, additionalData = Model })
     <div class="picture">
         @if (Model.DefaultPictureZoomEnabled && Model.PictureModels.Count == 1)
@@ -94,3 +108,4 @@
     }
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsAfterPictures, additionalData = Model })
 </div>
+@await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewOverview)
