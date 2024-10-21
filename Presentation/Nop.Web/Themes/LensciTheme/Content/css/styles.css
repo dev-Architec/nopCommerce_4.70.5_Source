@@ -287,7 +287,7 @@ margin: 0 0 40px;
 .fieldset .title,
 .section .title {
 margin: 0 0 15px;
-padding: 0 10px;
+/*padding: 0 10px;*/
 font-size: 20px;
 color: #444;
 }
@@ -1678,6 +1678,7 @@ transition: all 0.3s ease; /* Smooth hover effect */
 
 .item-box:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+    border: 1px solid #000;
 }
 
 .item-box .picture {
@@ -9810,7 +9811,243 @@ align-items: center;
     text-transform: uppercase;
 }
 
-    .login-page .page-title h1 {
-        font-weight: 700;
+.login-page .page-title h1 {
+    font-weight: 700;
+    color: #000;
+}
+
+.product-name h1 {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: normal;
+    margin: 0 0 7px 0;
+    color: #000;
+}
+
+.picture-gallery {
+    padding: 0 40px 40px;
+}
+
+.product-essential .short-description {
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 15px;
+}
+
+.product-essential .manufacturers {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.picture-gallery .picture {
+}
+
+    .picture-gallery .picture img {
+        width: 100%;
+        margin: 30px 0;
+    }
+
+.product-essential .product-reviews-overview {
+    text-align: center;
+}
+
+
+
+.product-review-links {
+    font-size: 16px;
+}
+
+    .product-review-links a {
+        font-size: 18px;
+        text-transform: capitalize;
         color: #000;
     }
+
+.product-collateral {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.product-details-block {
+    padding: 0 20px;
+}
+
+.product-details-block p {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.product-details-block .title {
+    font-size: 32px;
+    line-height: 32px;
+    color: #000;
+}
+
+.product-details-block td.spec-group-name {
+    padding-left: 0;
+}
+
+.also-purchased-products-grid.product-grid {
+    padding: 60px 40px;
+}
+
+#product-details-form .whylensci_container {
+    padding: 0 40px 40px;
+}
+
+#product-details-form h2.head {
+    padding-top: 30px;
+}
+
+.also-purchased-products-grid.product-grid {
+    padding: 60px 40px;
+}
+
+#product-details-form .whylensci_container {
+    padding: 0 40px 40px;
+}
+
+#product-details-form h2.head {
+    padding-top: 30px;
+}
+
+.page.product-reviews {
+    padding: 40px;
+    border-top: 1px solid #ddd;
+    min-height: auto;
+}
+
+.page.account-page {
+    padding-top: 30px;
+}
+
+.page.account-page .page-title {
+    padding-left: 0;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+    border: none;
+}
+
+
+#review_summary .overview {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+    #review_summary .overview h2.item {
+        font-size: 32px;
+    }
+
+#review_summary .text {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.product-review-item {
+    margin: 0 50px 40px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+}
+
+.product-review-item .review-item-head {
+    width: 100%;
+    max-width: 240px;
+    background: none;
+    border: none;
+    border-right: none;
+    box-sizing: border-box;
+    padding: 20px 10px 20px 0;
+    margin: 0;
+    position: relative;
+    text-align: center;
+}
+
+    .product-review-item .review-item-head .product-review-box {
+        float: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 23px;
+        color: #000;
+        justify-content: center;
+    }
+
+    .product-review-item .review-item-head .product-review-box .rating {
+        width: 150px;
+        height: 30px;
+        background-size: 30px;
+    }
+.product-review-item .review-item-head .product-review-box .rating div {
+    height: 30px;
+    background-size: 30px;
+}
+.product-review-item span.user {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #000;
+    margin-block: 10px;
+    display: inline-block;
+}
+
+.product-review-item span.date {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #000;
+}
+
+    .product-review-item .review-content {
+        width: calc(100% - 250px);
+    }
+
+        .product-review-item .review-content .review-title {
+            font-size: 24px;
+            margin: 0 0 20px 0;
+        }
+
+    .product-review-item .review-text {
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0 0 10px;
+    }
+
+    .product-review-item .product-review-helpfulness {
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0 0 10px;
+    }
+
+        .product-review-item .product-review-helpfulness span.question {
+            font-style: normal;
+            color: #000;
+        }
+
+
+    .product-review-item .vote {
+        background: #fff;
+        border: 1px solid #CED4D9;
+        border-radius: 4px;
+        color: #333;
+        display: inline-block;
+        line-height: 30px;
+        padding: 0 10px;
+        text-decoration: none;
+    }
+.result.review-already-added {
+    padding: 40px;
+}
+
+.related-products-grid.product-grid {
+    padding: 40px;
+}
