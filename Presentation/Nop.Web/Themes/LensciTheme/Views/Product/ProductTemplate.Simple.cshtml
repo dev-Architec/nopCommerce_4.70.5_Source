@@ -77,7 +77,7 @@
                     </div>
                     <div class="overview">
                         @await Html.PartialAsync("_Discontinued", Model)
-                        <div class="product-name">
+                       @*  <div class="product-name">
                             <h1>
                                 @Model.Name
                             </h1>
@@ -87,12 +87,12 @@
                             <div class="short-description">
                                 @Html.Raw(Model.ShortDescription)
                             </div>
-                        }
+                        } *@
                         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
                         <!--product reviews-->
-                        @await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewOverview)
+                   @*      @await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewOverview)
                         <!--manufacturers-->
-                        @await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers)
+                        @await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers) *@
                         <!--availability-->
                         @await Html.PartialAsync("_Availability", Model)
                         <!--SKU, MAN, GTIN, vendor-->
