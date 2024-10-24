@@ -36,7 +36,7 @@
                 }
                 if (subCategories.Count > 0)
                 {
-                    <div class="sublist-toggle"></div>
+                    <div class="sublist-toggle"><i class="fa-solid fa-chevron-right"></i></div>
                     <ul class="sublist @levelClass">
                         @foreach (var subCategory in subCategories)
                         {
@@ -59,8 +59,9 @@
     var rootCategoriesResponsive = Model.Categories.ToList();
     //name it "Categories" if we have only categories. Otherwise, "Menu"
     var responsiveMenuTitle = Model.HasOnlyCategories ? T("Categories") : T("Menu");
-    <div class="menu-toggle">@responsiveMenuTitle</div>
-    <ul class="top-menu mobile">
+    <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+    <div class="menu-toggle close"><i class="fa-solid fa-xmark"></i></div>
+    <ul class="top-menu mobile">        
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.MobHeaderMenuBefore, additionalData = Model })
         @if (Model.DisplayHomepageMenuItem)
         {
@@ -132,13 +133,30 @@
     {
         <script asp-location="Footer">
             $(document).ready(function () {
+                // Toggle the mobile menu on click
                 $('.menu-toggle').on('click', function () {
-                    $(this).siblings('.top-menu.mobile').slideToggle('slow');
+                    $(this).siblings('.top-menu.mobile').toggleClass('menu-active');
+                    $(this).siblings('.header-menu').toggleClass('menu-headeactive');
                 });
+
+                // Toggle submenus and ensure only one is open at a time
                 $('.top-menu.mobile .sublist-toggle').on('click', function () {
-                    $(this).siblings('.sublist').slideToggle('slow');
+                    var $this = $(this);
+                    var $submenu = $this.siblings('.sublist');
+
+                    // If the submenu is already active, just toggle it
+                    if ($submenu.hasClass('submenu-active')) {
+                        $submenu.slideToggle('slow').removeClass('submenu-active');
+                    } else {
+                        // Close any other active submenu first
+                        $('.sublist.submenu-active').slideUp('slow').removeClass('submenu-active');
+
+                        // Open the clicked submenu
+                        $submenu.slideToggle('slow').addClass('submenu-active');
+                    }
                 });
             });
+
         </script>
 
     }
