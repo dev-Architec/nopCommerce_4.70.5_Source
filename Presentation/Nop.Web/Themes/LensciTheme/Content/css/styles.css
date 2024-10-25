@@ -6771,7 +6771,7 @@ display: none;
     }
 
 .header-menu {
-    z-index: 99;
+    z-index: 9999;
 }
     .menu-toggle {
         padding: 0 10px;
@@ -9814,17 +9814,28 @@ align-items: center;
 .form-input {
     display: flex;
     margin-bottom: 20px;
+    align-items: center;
+}
+
+.login-page .form-input label[for="gender"] {
+    margin-right: 10px;
+}
+
+.form-input:has(.required) label:after {
+    content: "*";
+    color: red;
 }
 
     .form-input label {
         width: 100%;
-        max-width: 180px;
+        max-width: 200px;
         order: 0;
         font-size: 16px;
         color: #000;
         text-transform: capitalize;
         display: flex;
         align-items: center;
+        min-height: 50px;
     }
 
     .form-input input[type="text"], .form-input input[type="email"], .form-input input[type="tel"], .form-input input[type="password"], .form-input textarea {
@@ -9842,6 +9853,7 @@ align-items: center;
 
 .form-input .required {
     order: 1;
+    display: none;
 }
 .form-input.reversed {
     gap: 10px;
@@ -10362,3 +10374,194 @@ align-items: center;
     }
 }
 
+.login-page .form-input label {
+    background: #ebebeb;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding: 0 10px;
+    margin-right: -2px;
+    position: relative;
+}
+
+.login-page .form-input label {
+    background: #ebebeb;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+    padding: 0 10px;
+    margin-right: -2px;
+    position: relative;
+}
+
+    .login-page .form-input label[for="RememberMe"] {
+        padding: 0;
+        background: none;
+        border: none;
+    }
+
+#gender label {
+    background: no-repeat;
+    border: none;
+}
+
+.form-input label[for="Newsletter"] {
+    margin-right: 10px;
+}
+
+.form-input input#Newsletter {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 1200px) {
+    .login-page .customer-blocks {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 991px) {
+    .product-details-page .gallery {
+        width: 100%;
+    }
+
+    .product-collateral {
+        grid-template-columns: 1fr;
+    }
+
+    #product-details-form .whylensci_container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #review_summary .overview {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+
+    #review_summary .overview .star_rating {
+        text-align: center;
+    }
+
+    #review_summary .overview .star_rating .text {
+        text-align: center;
+    }
+
+    .product-review-item {
+        flex-direction: column;
+        text-align: left;
+        margin: 0 20px 20px;
+        padding-bottom: 10px;
+    }
+
+    .product-review-item .review-content .review-title {
+        max-width: 100%;
+        float: none;
+    }
+
+    .product-review-item .review-item-head {
+        max-width: 100%;
+        text-align: left;
+        padding: 0;
+    }
+
+    .product-review-item .review-content {
+        padding: 0;
+        width: 100%;
+    }
+
+    .product-review-item .review-item-head .product-review-box {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-page .form-input label {
+        font-size: 16px;
+        max-width: 160px;
+        padding: 0 5px;
+    }
+
+    .login-page .customer-blocks {
+        padding: 0 15px;
+    }
+    .product-review-item .review-content .review-title {
+        font-size: 18px;
+    }
+
+    .product-review-item span.date {
+        font-size: 14px;
+    }
+
+    .product-review-item .review-text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .product-review-item .product-review-helpfulness {
+        font-size: 14px;
+    }
+    #review_summary .overview h2.item {
+        font-size: 20px;
+    }
+    #needhelp h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .related-products-grid.product-grid {
+        padding: 40px 20px;
+    }
+    .picture-gallery {
+        padding: 0 20px 20px;
+    }
+
+    .overview-buttons div {
+        width: 100%;
+    }
+
+    .overview-buttons {
+        padding: 0 20px;
+    }
+    #product-details-form .whylensci_container {
+        padding: 0px;
+    }
+
+    #product-details-form .whylensci_container span {
+        font-size: 15px;
+        margin-top: 10px;
+        display: inline-block;
+        line-height: 22px;
+    }
+    .product-name h1 {
+        font-size: 26px;
+        text-align: left;
+    }
+
+    .product-essential .short-description {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .product-essential .manufacturers {
+        text-align: left;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-page .form-input {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .login-page .form-input label {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: none;
+    }
+}
