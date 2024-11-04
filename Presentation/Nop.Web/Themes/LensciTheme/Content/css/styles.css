@@ -2549,15 +2549,26 @@ margin: 0 0 40px;
 }
 
 .product-specs-box td {
-border: 1px solid #ddd;
-padding: 10px;
+    border: none;
+    padding: 10px 0px;
+    font-size: 18px;
+}
+.product-specs-box td.spec-name {
+    font-weight: bold;
 }
 
+.product-specs-box tr {
+    border-bottom: 1px dashed #CED4D9;
+}
+.product-details-block td.spec-group-name {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 .product-specs-box td.spec-group-name {
     border: 0;
     padding-top: 20px;
-    font-size: 16px;
-    color: #444;
+    color: #333;
 }
 
 .product-tags-list {
@@ -9458,10 +9469,7 @@ ul.badges {
 }
 
 .whylensci_item {
-    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     flex: 1;
     text-align: center;
 }
@@ -9958,8 +9966,20 @@ align-items: center;
 
 .product-collateral {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
+}
+
+.product-details-block {
+    width: 100%;
+}
+
+.product-collateral:has(.product-details-block:nth-child(2)) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.product-collateral:has(.product-details-block:nth-child(1):only-child) {
+    grid-template-columns: 1fr;
 }
 
 .product-details-block {
@@ -9972,9 +9992,9 @@ align-items: center;
 }
 
 .product-details-block .title {
-    font-size: 32px;
-    line-height: 32px;
-    color: #000;
+    font-size: 28px;
+    line-height: 28px;
+    color: #333;
 }
 
 .product-details-block td.spec-group-name {
@@ -10441,7 +10461,13 @@ align-items: center;
     }
 
     .product-collateral {
-        grid-template-columns: 1fr;
+        display: block;
+        text-align: left;
+    }
+
+    .product-details-block {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     #product-details-form .whylensci_container {
@@ -10583,3 +10609,28 @@ align-items: center;
     max-width: 80%;
     margin: auto;
 }
+
+.product-details-page #whylensci {
+    grid-column: span 2;
+    background-color: #F7F7F7;
+}
+
+.product-details-page #whylensci .head {
+    color: #333;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+}
+
+.product-details-page #whylensci span {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+    color: #333 !important;
+}
+
+.product-details-page .whylensci_item img {
+margin-bottom: 20px;
+}
+
