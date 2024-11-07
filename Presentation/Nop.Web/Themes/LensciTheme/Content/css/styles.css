@@ -7806,12 +7806,12 @@ text-align: left;
 
 
 @media all and (min-width: 1001px) {
-.item-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 0 20px;
-}
+    .item-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 0 20px;
+    }
 
 .item-grid .item-box, .product-grid .item-box {
     width: 100% !important;
@@ -8109,7 +8109,7 @@ vertical-align: middle;
     position: sticky;
     top: -50px;
     z-index: 5;
-    padding: 15px 15px 0px;
+    padding: 15px 15px;
     text-align: center;
     background-color: #CC0005;
     transition: top 0.3s ease-in-out, background-color 0.3s ease; 
@@ -8147,7 +8147,7 @@ display: none;
 
     .header-menu > ul > li > a {
     display: block;
-    padding: 15px 10px 25px;
+    padding: 15px 10px;
     line-height: 20px;
     font-size: 16px; /*reset zeroing*/
     color: white;
@@ -8155,10 +8155,11 @@ display: none;
     font-weight: bold;
     }
 
-    .header-menu > ul > li > a:hover,
-    .header-menu > ul > li > a:focus {
-        color: white;
-    }
+        .header-menu > ul > li > a:hover,
+        .header-menu > ul > li > a:focus {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
 
 .header-menu .sublist {
 display: none;
@@ -8983,7 +8984,7 @@ max-width: 100%;
     .badge .badge-text {
         color: #333;
         float: left;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: bold;
         line-height: 34px;
         text-align: left;
@@ -9121,7 +9122,6 @@ width: 100%;
 #tiles {
     margin: 0 auto;
     padding: 20px;
-    max-width: 1000px;
 }
 
     #tiles ul {
@@ -9610,10 +9610,7 @@ div#sub_bar {
         background: #000 !important;
     }
 
-a.ico-cart {
-    display: flex;
-    align-items: center;
-}
+
 
 .badges-wrapper {
     overflow: hidden;
@@ -10634,3 +10631,37 @@ align-items: center;
 margin-bottom: 20px;
 }
 
+
+.header-links a.ico-cart span.cart-qty {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    background: #fff;
+    line-height: normal;
+    color: #cc0005;
+    border-radius: 100%;
+    margin: 1px 0px 0 -4px;
+}
+
+.header-links a.ico-cart {
+    position: relative;
+}
+
+.header-links a.ico-cart i.fa-solid.fa-cart-shopping {
+    display: inline-block;
+}
+
+.right-nav .header-links li a {
+    width: 45px;
+    border-radius: 100%;
+}
+
+.right-nav .header-links li {
+    margin: 0;
+}
+
+.right-nav .header-links li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
