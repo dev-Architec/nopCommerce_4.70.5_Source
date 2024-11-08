@@ -8137,7 +8137,7 @@ display: none;
 .header-menu > ul > li {
     display: inline-block;
 /*      border-left: 1px solid #ddd;*/
-    padding: 0 15px;
+    padding: 0 10px;
     vertical-align: middle;
 }
 
@@ -9623,12 +9623,15 @@ div#sub_bar {
 }
 
 @media (max-width: 1280px) and (min-width: 1001px) {
-    .right-nav {
-        position: absolute;
-        top: -30px;
-        right: 20px;
+    .header-menu {
+        gap: 5px;
     }
-
+    .header-logo {
+        margin: 0;
+    }
+    .header-menu > ul > li > a, .header-menu > ul > li > span {
+        font-size: 13px;
+    }
     .header {
         z-index: 0;
     }
@@ -10664,4 +10667,24 @@ margin-bottom: 20px;
 .right-nav .header-links li a:hover {
     color: #fff;
     background: rgba(255, 255, 255, 0.2);
+}
+
+.phoneNumber {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 0 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 34px;
+    padding: 0 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@media(max-width: 767px) {
+    .phoneNumber {
+        display: none;
+    }
 }
