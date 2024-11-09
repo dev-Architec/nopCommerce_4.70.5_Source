@@ -10820,9 +10820,10 @@ select, input[type="text"] {
         text-align: center;
     }
 
-/* Modal styles */
+/* Modal styles 
+*/
 .cst-cart-modal {
-    display: none; /* Hidden by default */
+    display: none;  /*Hidden by default */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -10868,8 +10869,8 @@ select, input[type="text"] {
 
 
 
-/*    customerinfocss*/
-.account-container {
+/*    customerinfocss
+*/.account-container {
     background-color: #ffffff;
     width: auto;
     max-width: auto;
@@ -10902,7 +10903,8 @@ select, input[type="text"] {
         background-color: #b71c1c;
     }
 
-/* Promotion Box */
+/* Promotion Box 
+*/
 .promo-box {
     display: flex;
     align-items: center;
@@ -10964,7 +10966,8 @@ select, input[type="text"] {
         background-color: #b71c1c;
     }
 
-/* Account Tools and Customer Service */
+/* Account Tools and Customer Service 
+*/
 .account-tools-container {
     display: flex;
     justify-content: space-between;
