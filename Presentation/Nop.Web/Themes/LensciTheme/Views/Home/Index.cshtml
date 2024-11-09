@@ -32,6 +32,19 @@
         @{
             await Html.RenderPartialAsync("_HeaderBanner");
         }
+
+        @{
+            await Html.RenderPartialAsync("_renew.Prescription");
+
+        }
+        @{
+            await Html.RenderPartialAsync("_AutoRefilBanner");
+
+        }
+
+       
+        
+        
         @await Component.InvokeAsync(typeof(TopicBlockViewComponent), new { systemName = "HomepageText" })
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
         @await Component.InvokeAsync(typeof(HomepageCategoriesViewComponent))
@@ -45,10 +58,13 @@
 
         }
         @{
-            await Html.RenderPartialAsync("_Tiles");
-
+            await Html.RenderPartialAsync("_CartBadge");
+        }
+        @{
+            await Html.RenderPartialAsync("_FAQ_nav");
 
         }
+      
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
         @await Component.InvokeAsync(typeof(HomepageBestSellersViewComponent))
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageBeforeNews })

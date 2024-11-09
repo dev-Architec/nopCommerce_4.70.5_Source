@@ -27,6 +27,7 @@
 
     var breadcrumbDelimiter = commonSettings.BreadcrumbDelimiter;
 }
+
 @*category breadcrumb*@
 @section Breadcrumb
 {
@@ -68,6 +69,10 @@
         </div>
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CategoryDetailsAfterBreadcrumb, additionalData = Model })
     }
+}
+@await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.HomepageTop })
+@{
+    await Html.RenderPartialAsync("_HeaderBanner");
 }
 
 @section CatalogFilters {

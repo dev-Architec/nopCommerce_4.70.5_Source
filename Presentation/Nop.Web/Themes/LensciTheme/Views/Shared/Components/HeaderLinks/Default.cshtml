@@ -13,7 +13,7 @@
         @if (Model.IsAuthenticated)
         {
             <li>
-                <a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">
+                <a asp-controller="customer" asp-action="Myaccount" as class="ico-account">
                     <i class="fas fa-user"></i>  @*Model.CustomerName*@
                 </a>
             </li>

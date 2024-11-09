@@ -1152,7 +1152,12 @@ public partial class CustomerController : BasePublicController
     #endregion
 
     #region My account / Info
+    public virtual async Task<IActionResult> Myaccount()
+    {
+        
 
+        return View();
+    }
     public virtual async Task<IActionResult> Info()
     {
         var customer = await _workContext.GetCurrentCustomerAsync();

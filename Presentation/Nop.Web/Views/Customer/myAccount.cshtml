@@ -1,0 +1,48 @@
+﻿
+
+
+<div class="account-container">
+    <header class="account-header">
+        <h2>Guset  Account</h2>
+        <a href="@Url.RouteUrl("Logout")" class="logout-button">Logout</a>
+    </header>
+
+    <!-- Promotion Box -->
+    <div class="promo-box">
+        <div class="promo-badge">
+            <p>Get <span>$10</span> OFF</p>
+        </div>
+        <div class="promo-details">
+            <h3>Big news!</h3>
+            <p>You can save $10, $20, $30 or more on every order from Lens.com. All you need to do is invite your friends to share the Lens.com experience. When they place their first order, <b>you get $10 off and so do they!</b></p>
+            <p>The Lens.com Refer a Friend program is simple and there's no limit to how much you can save.</p>
+            <div class="promo-links">
+                <a href="#" class="learn-more">Learn More</a>
+                <button class="get-offer-button">Get $10 Off</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Tools and Customer Service -->
+    <div class="account-tools-container">
+        <div class="cst-tools">
+            <h3>Account Tools</h3>
+            <ul>
+                <li><a asp-controller="customer" asp-action="info">Edit Account Information</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Reorder Reminders</a></li>
+                <li><a href="#">Refer a Friend Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="cst-customer">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="#">Frequently Asked Questions</a></li>
+                <li><a href="#">Exchanges and Returns</a></li>
+                <li><a href="#">Order History</a></li>
+                <li><a href="#">Guarantee</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

@@ -10688,3 +10688,312 @@ margin-bottom: 20px;
         display: none;
     }
 }
+
+
+/*customizatio */
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .tab:first-child {
+        border-right: 1px solid #ccc;
+    }
+
+    .tab.active {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
+
+.tab-icon {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .form-table th, .form-table td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+select, input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.patient-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+    .patient-info input[type="text"] {
+        width: 100%;
+    }
+
+.continue-btn {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.savings-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+    .savings-banner div {
+        padding: 15px;
+        flex: 1;
+    }
+
+.save-message {
+    color: red;
+    font-weight: bold;
+}
+
+.best-value {
+    background-color: #e5f3ff;
+    position: relative;
+    color: #333;
+}
+
+    .best-value::after {
+        content: "Your best value";
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: blue;
+        white-space: nowrap;
+    }
+
+.qty-select {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+    .qty-select div {
+        width: 45%;
+        text-align: center;
+    }
+
+/* Modal styles */
+.cst-cart-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cst-cart-modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+    .cst-cart-modal-content h2 {
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .cst-cart-modal-content p {
+        margin: 10px 0;
+    }
+
+.cst-cart-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+    .cst-cart-close-btn:hover {
+        color: black;
+    }
+
+
+
+/*    customerinfocss*/
+.account-container {
+    background-color: #ffffff;
+    width: auto;
+    max-width: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .account-header h2 {
+        margin: 0;
+    }
+
+.logout-button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .logout-button:hover {
+        background-color: #b71c1c;
+    }
+
+/* Promotion Box */
+.promo-box {
+    display: flex;
+    align-items: center;
+    background-color: #fce4ec;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.promo-badge {
+    background-color: #d32f2f;
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    text-align: center;
+    margin-right: 20px;
+}
+
+    .promo-badge span {
+        font-size: 1.5em;
+    }
+
+.promo-details {
+    flex-grow: 1;
+}
+
+    .promo-details h3 {
+        margin-top: 0;
+    }
+
+    .promo-details p {
+        margin: 10px 0;
+    }
+
+.promo-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.learn-more {
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.get-offer-button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .get-offer-button:hover {
+        background-color: #b71c1c;
+    }
+
+/* Account Tools and Customer Service */
+.account-tools-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cst-tools, .cst-customer {
+    width: 48%;
+}
+
+    .cst-tools h3, .cst-customer h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .cst-tools ul, .cst-customer ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .cst-tools li, .cst-customer li {
+        margin-bottom: 10px;
+    }
+
+    .cst-tools a, .cst-customer a {
+        text-decoration: none;
+        color: #d32f2f;
+    }
+
+        .cst-tools a:hover, .cst-customer a:hover {
+            text-decoration: underline;
+        }
