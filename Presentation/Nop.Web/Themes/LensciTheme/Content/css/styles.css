@@ -154,6 +154,39 @@ button, .button-1, .button-2 {
 cursor: pointer;
 }
 
+.btn.large {
+    font-size: 22px;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 30px;
+}
+
+.btn.ghost {
+    background: #fff;
+    border: 1px solid #667279;
+    color: #CC0005;
+    font-weight: bold;
+}
+    .btn.ghost:hover {
+        background: #fff;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+    }
+
+.btn {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 0 20px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: .1s ease-out;
+}
+
 label, label + * {
 vertical-align: middle;
 }
@@ -8909,7 +8942,7 @@ max-width: 100%;
 #header-banner {
     width: 100%;
     /*  max-width: 1200px;*/
-    margin: 0 auto 50px;
+    margin: 0 auto 30px;
     /*  padding: 20px 0;*/
     text-align: center;
 }
@@ -8931,7 +8964,7 @@ max-width: 100%;
     font-weight: bold;
     /*  border: 1px solid transparent;*/
     border-radius: 0px;
-    background-color: #fff;
+    background: linear-gradient(180deg, #f7f7f7 0%, #fff 230px);
     color: #24262A;
     margin-bottom: 0px;
     width: 100%;
@@ -8942,14 +8975,19 @@ max-width: 100%;
     }
 
     .thumbnails__item.is-active {
-        background-color: dimgrey;
+        background: #667279;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
         color: #fff;
-        border-color: dimgrey;
+        margin: 0;
     }
 
     .thumbnails__item p {
         margin: 0;
     }
+li#thumbnail2 {
+    border-left: 1px solid #CED4D9;
+    border-right: 1px solid #CED4D9;
+}
 /*  badge*/
 .badges-container {
     width: 100%;
@@ -9359,8 +9397,155 @@ text-align: left;
 /*  cart badge*/
 
 #checkout-help {
-    padding: 20px;
-    background-color: #f9f9f9;
+    border-top: 1px solid #CED4D9;
+    text-align: center;
+    padding: 0;
+}
+
+#checkout-help ul.badges {
+    margin: 0 auto;
+    padding: 35px 40px 30px 40px;
+    gap: 0;
+}
+
+#checkout-help ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    padding: 0 300px;
+    justify-content: center;
+}
+
+#checkout-help ul li {
+    box-sizing: border-box;
+    height: auto;
+    text-align: left;
+    width: 32%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 125px;
+    box-shadow: none;
+    border-radius: 0;
+}
+#checkout-help ul li.norton .image-area {
+    cursor: pointer;
+}
+
+#checkout-help ul li.moneyback, #checkout-help ul li.spamfree {
+    border-left: 1px solid #CED4D9;
+    border-right: 1px solid #CED4D9;
+    padding: 0 10px;
+    border-radius: 0px;
+}
+
+#checkout-help ul li .image-area {
+    width: 43%;
+    max-width: 150px;
+    height: 88px;
+    text-align: center;
+    margin: 0 10px 0 0;
+    flex-shrink: 0;
+}
+#checkout-help ul li.trusted .image-area.pill {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+}
+#checkout-help ul li .image-area.pill {
+    border: 1px solid #e6e6e6;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 30px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+}
+#checkout-help ul li.divider {
+    width: 100%;
+    border-top: 1px solid #CED4D9;
+    margin: 0;
+    height: 0;
+    min-height: 0;
+}
+#checkout-help ul li.trusted .image-area.pill img {
+    margin: 0 auto;
+    width: calc(100% - 10px);
+    max-width: unset;
+    height: auto;
+}
+
+#checkout-help ul li .image-area svg {
+    width: 100%;
+    height: 100%;
+}
+#checkout-help ul li .text {
+    width: 57%;
+    max-width: 230px;
+}
+.text {
+    font-size: 14px;
+}
+
+#checkout-help ul li .text h3 {
+    font-weight: bold;
+    color: #333;
+    line-height: 23px;
+    font-size: 19px;
+    margin: 0;
+}
+
+#checkout-help ul li .text p {
+    font-size: 16px;
+    line-height: 20px;
+    display: inline-block;
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+@media only screen and (max-width: 1020px) {
+    #checkout-help ul li .image-area.pill {
+        height: 45px;
+    }
+    #checkout-help ul.badges {
+        padding: 35px 20px 30px 20px
+    }
+    #checkout-help ul li .image-area {
+        width: 35%;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #checkout-help ul.badges {
+        padding: 35px 0 30px 0
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #checkout-help ul li {
+        width: 100%;
+        border-width: 0px 0px 1px 0px !important;
+        border-bottom: 1px solid #CED4D9;
+        padding: 25px 20px;
+        flex-direction: row;
+    }
+    #checkout-help ul li.divider {
+        display: none;
+    }
+    .faq_nav ul li a {
+        font-size: 14px;
+    }
+    .faq_nav .container {
+        padding: 0 20px;
+    }
 }
 
 ul.badges {
@@ -9581,6 +9766,8 @@ body .theme-custom {
     width: 100%;
     z-index: 9;
     height: 100%;
+    left: 0;
+    padding: 0;
 }
 
 #small-search-box-form {
@@ -11000,3 +11187,342 @@ select, input[type="text"] {
         .cst-tools a:hover, .cst-customer a:hover {
             text-decoration: underline;
         }
+
+#renew_prescription {
+    text-align: center;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #333;
+}
+
+    #renew_prescription .rx_icon {
+        border: 1px solid #eee;
+        border-radius: 100px;
+        box-sizing: border-box;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        width: 100px;
+        height: 100px;
+        padding: 20px 7px 20px 12px;
+        margin: 0 15px 0 0;
+    }
+
+        #renew_prescription .rx_icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+    #renew_prescription .renew_text {
+        font-size: 22px;
+        margin: 0 20px 0 0;
+    }
+
+        #renew_prescription .renew_text span {
+            text-decoration: line-through;
+            color: #667279;
+        }
+
+        #renew_prescription .renew_text b {
+            color: #CC0005;
+        }
+
+    #renew_prescription .renew_link {
+        color: #CC0005;
+        display: block;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        border: 1px solid #667279;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+#autorefill_banner {
+    margin: 0 auto 30px auto;
+    padding:40px;
+    position: relative;
+    visibility: visible;
+    background: #E8F7FF;
+}
+#autorefill_banner .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#autorefill_banner .title .icon #autoship_logo {
+    width: 150px;
+    height: 150px;
+    margin: -22px 0 0 -20px;
+}
+#autorefill_banner .title .icon {
+    width: 130px;
+    height: 115px;
+}
+#autorefill_banner .title h1 {
+    font-size: 65px;
+    font-weight: bold;
+    line-height: 54px;
+    margin: 0;
+    letter-spacing: -2px;
+}
+#autorefill_banner .title h1 span {
+    font-size: 35px;
+    line-height: 35px;
+    font-weight: normal;
+    display: block;
+    letter-spacing: normal;
+    margin: 10px 0 0 0;
+}
+#autorefill_banner .perks {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px 20px 30px 20px;
+    margin: 0 -40px;
+}
+#autorefill_banner .perks .perk {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+    text-align: center;
+}
+#autorefill_banner .perks .perk .icon {
+    height: 80px;
+}
+#autorefill_banner .perks .perk .icon #never_run_out {
+    width: 75px;
+    height: 75px;
+}
+#autorefill_banner .perks .perk h3 {
+    font-weight: bold;
+    color: #333;
+    font-size: 30px;
+    line-height: 30px;
+    margin: 0;
+}
+#autorefill_banner .perks .perk p {
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    line-height: 24px;
+    margin: 0;
+}
+#autorefill_banner .perks .perk .icon #discount {
+    width: 86px;
+    height: 86px;
+}
+#autorefill_banner .perks .perk .icon #calendar {
+    width: 73px;
+    height: 73px;
+}
+
+#autorefill_banner .btn {
+    margin: 0 auto 15px auto;
+    display: block;
+    width: 250px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 22px;
+    padding: 0 30px;
+    background: #CC0005;
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: .1s ease-out;
+}
+
+#autorefill_banner .btn:hover {
+    background: #CC0005;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.13), 0 4px 15px 0 rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 767px) {
+    #autorefill_banner .perks {
+        flex-direction: column;
+        gap: 40px;
+    }
+    #autorefill_banner .title h1 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    #autorefill_banner .title .icon #autoship_logo {
+        margin: -15px 0 0 -15px;
+        width: 110px;
+        height: 110px;
+    }
+    #autorefill_banner .title h1 span {
+        font-size: 22px;
+        line-height: 22px;
+        margin: 0;
+    }
+    #autorefill_banner .title {
+        column-gap: 0;
+    }
+    #autorefill_banner .title .icon {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+.manufacturer-row-page .ghost.all-brands {
+    display: block;
+    max-width: 285px;
+    margin: 45px auto 0 auto;
+}
+
+.category-grid.home-page-category-grid, .manufacturer-row-page, .home-page-product-grid, .news-list-homepage {
+    margin: 0 auto 30px auto;
+    padding: 50px 40px 20px 40px;
+    position: relative;
+    visibility: visible;
+    background: linear-gradient(180deg, #f7f7f7 0%, #fff 230px);
+}
+
+#testimonials .btn-outline-primary {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: block;
+    max-width: 280px;
+    text-align: center;
+    margin: 45px auto 0 auto;
+    background: none;
+    width: auto;
+    height: auto;
+}
+
+#testimonials .btn-outline-primary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding: 0 40px;
+    display: inline-block;
+}
+
+.faq_nav {
+    border: 0;
+    background: #FAFAFA;
+    color: #333;
+    text-align: left;
+    padding: 45px 0;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+}
+.faq_nav h5 {
+    color: #333;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 0 0 10px 0;
+    font-size: 26px;
+}
+.faq_nav h5 a {
+    color: #333; 
+    text-decoration: none;
+}
+
+.faq_nav ul li a:hover {
+    color: #CC0005;
+}
+
+.faq_nav ul.col_1 {
+    border-top: 1px solid #CED4D9;
+}
+
+.faq_nav ul {
+    font-size: 12px;
+    float: left;
+    list-style: none;
+    margin: 0;
+    width: 100%;
+}
+.faq_nav ul li {
+    border-bottom: 1px solid #CED4D9;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 0;
+}
+.faq_nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+}
+
+.faq_nav ul li a::before {
+    content: ">";
+    color: #333;
+    font-weight: bold;
+    font: inherit;
+    display: inline-block;
+    margin: 0 3px 0 0;
+}
+
+.html-home-page .center-1 {
+    margin: 0;
+}
+
+@media only screen and (min-width: 1700px) {
+    .header-menu > ul > li > a, .header-menu > ul > li > span {
+        font-size: 22px;
+        padding: 15px;
+    }
+    #sub_bar #badges .badges-wrapper .badges-list .badge-text {
+        font-size: 24px;
+    }
+    .right-nav .header-links li a {
+        font-size: 30px;
+        width: 55px;
+        height: 55px;
+        padding: 4px 0px;
+    }
+    .right-nav .header-links li {
+        margin: 0 10px;
+    }
+    #checkout-help ul li .image-area {
+        height: 110px;
+        max-width: 185px;
+    }
+    #checkout-help ul li .text h3 {
+        line-height: 30px;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+    }
+    #checkout-help ul li .text p {
+        line-height: 24px;
+        font-size: 20px;
+    }
+    #checkout-help ul li {
+        min-height: 160px;
+    }
+    #checkout-help ul li .text {
+        max-width: 285px;
+    }
+    #renew_prescription .renew_text {
+        font-size: 24px;
+    }
+    #renew_prescription .renew_link {
+        font-size: 20px;
+        padding: 15px 25px;
+    }
+}
+#checkout-help ul li .text p .fancy {
+    color: #333;
+    display: block;
+    font-size: 12px;
+}
