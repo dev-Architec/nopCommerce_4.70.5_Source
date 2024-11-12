@@ -55,18 +55,31 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            @if (Model.ShowSku)
+                           @*  @if (Model.ShowSku)
                             {
                                 <th class="sku">
                                     @T("ShoppingCart.SKU")
                                 </th>
-                            }
+                            } *@
                             @if (Model.ShowProductImages)
                             {
                                 <th class="product-picture">
                                     @T("ShoppingCart.Image")
                                 </th>
                             }
+                            <th>
+                                BC
+                            </th>
+                            <th>
+                                DIA
+                            </th>
+                            <th>
+                                Power
+                            </th>
+                            <th>
+                                Addition
+                            </th>
+                            
                             <th class="product">
                                 @T("ShoppingCart.Product(s)")
                             </th>
@@ -76,6 +89,7 @@
                                     @T("ShoppingCart.VendorName")
                                 </th>
                             }
+                         
                             <th class="unit-price">
                                 @T("ShoppingCart.UnitPrice")
                             </th>
@@ -97,13 +111,13 @@
                         @foreach (var item in Model.Items)
                         {
                             <tr>
-                                @if (Model.ShowSku)
+                               @*  @if (Model.ShowSku)
                                 {
                                     <td class="sku">
                                         <label class="td-title">@T("ShoppingCart.SKU"):</label>
                                         <span class="sku-number">@item.Sku</span>
                                     </td>
-                                }
+                                } *@
                                 @if (Model.ShowProductImages)
                                 {
                                     <td class="product-picture">
@@ -112,6 +126,19 @@
                                         </a>
                                     </td>
                                 }
+                                <td>
+                                    8.7
+                                </td>
+                                <td>
+                                    14.0
+                                </td>
+                                <td>
+                                    9.75
+                                </td>
+                                <td>
+                                    LOW (MAX ADD +1.25)
+                                </td>
+                                
                                 <td class="product">
                                     <a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))" class="product-name">@item.ProductName</a>
                                     @if (!string.IsNullOrEmpty(item.AttributeInfo))
@@ -383,6 +410,9 @@
         <div class="no-data">
             @T("ShoppingCart.CartIsEmpty")
         </div>
+        @await Html.PartialAsync("customCart")
+        ;
+
     }
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentAfter, additionalData = Model })
 
