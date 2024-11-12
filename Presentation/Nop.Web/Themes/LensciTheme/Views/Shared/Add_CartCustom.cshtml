@@ -36,12 +36,13 @@
     <a id="" class="continue-btn" onclick="showPrescription()">Continue</a>
     <p>Use your FSA or HSA. <a href="javascript:void(0);" onclick="openModal()">Learn More</a></p>
 </div>
-
-<div class="conatiner-2" id="prescriptionContainer" style="display:none;">
-    <div class="tabs">
-        <div class="tab active"><span class="tab-icon">💊</span> Enter Your Prescription</div>
-        <div class="tab"><span class="tab-icon">⬆️</span> Upload Your Prescription</div>
+<div class="cstfileupload-tab-container" id="cstfileupload-tab" style="display:none;">
+    <!-- Toggle Section -->
+    <a class="continue-btn" onclick="toggleSection('prescription')">Enter Your Prescription</a>
+    <a class="continue-btn" onclick="toggleSection('upload')">Upload Your Prescription</a>
     </div>
+<div class="conatiner-2" id="prescriptionContainer" style="display:none;">
+   
 
     <div class="checkbox">
         <label><input type="checkbox"> Same prescription for both eyes</label>
@@ -114,11 +115,21 @@
     <a class="btn large back ghost" onclick="GoBack()" title="Go Back">Go Back</a>
 </div>
 
+<div class="cstfileupload-upload-container" id="upload-section" style="display:none;">
+    <div class="cstfileupload-upload-icon">
+        <span class="material-icons">file_upload</span>
+    </div>
+    <p>Upload a photo or PDF of your prescription</p>
+    <button class="cstfileupload-upload-btn">Upload Rx</button>
+</div>
+
 <script>
 
     function showPrescription() {
         document.getElementById("prescriptionContainer").style.display = "block";
         document.getElementById("prescriptionItemContainer").style.display = "none";
+        document.getElementById("cstfileupload-tab").style.display = "block";
+       
     }
     function GoBack() {
         document.getElementById("prescriptionContainer").style.display = "none";
@@ -161,6 +172,24 @@
                 modal.style.display = "none";
             }
         }
+
+
+
+    function toggleSection(section) {
+       
+
+
+        // Show the selected section
+        if (section === "prescription") {
+            document.getElementById("prescriptionContainer").style.display = "block";
+            document.getElementById("upload-section").style.display = "none";
+
+
+        } else if (section === "upload") {
+            document.getElementById("prescriptionContainer").style.display = "none";
+            document.getElementById("upload-section").style.display = "block";
+        }
+    }
     </script>
 
 
