@@ -27,6 +27,8 @@
                 </ul>
             </div>
         }
+        @await Html.PartialAsync("_StepContainer")
+        ;
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
             <div class="table-wrapper">
@@ -55,12 +57,12 @@
                     </colgroup>
                     <thead>
                         <tr>
-                           @*  @if (Model.ShowSku)
-                            {
-                                <th class="sku">
-                                    @T("ShoppingCart.SKU")
-                                </th>
-                            } *@
+                            @*  @if (Model.ShowSku)
+                        {
+                        <th class="sku">
+                        @T("ShoppingCart.SKU")
+                        </th>
+                        } *@
                             @if (Model.ShowProductImages)
                             {
                                 <th class="product-picture">
@@ -82,7 +84,7 @@
                             <th>
                                 Addition
                             </th>
-                            
+
                             <th class="product">
                                 @T("ShoppingCart.Product(s)")
                             </th>
@@ -92,7 +94,7 @@
                                     @T("ShoppingCart.VendorName")
                                 </th>
                             }
-                         
+
                             <th class="unit-price">
                                 @T("ShoppingCart.UnitPrice")
                             </th>
@@ -114,13 +116,13 @@
                         @foreach (var item in Model.Items)
                         {
                             <tr>
-                               @*  @if (Model.ShowSku)
-                                {
-                                    <td class="sku">
-                                        <label class="td-title">@T("ShoppingCart.SKU"):</label>
-                                        <span class="sku-number">@item.Sku</span>
-                                    </td>
-                                } *@
+                                @*  @if (Model.ShowSku)
+                        {
+                        <td class="sku">
+                        <label class="td-title">@T("ShoppingCart.SKU"):</label>
+                        <span class="sku-number">@item.Sku</span>
+                        </td>
+                        } *@
                                 @if (Model.ShowProductImages)
                                 {
                                     <td class="product-picture">
@@ -152,9 +154,9 @@
                                 <td>
                                     LOW (MAX ADD +1.25)
                                     <br />
-                                       LOW (MAX ADD +1.25)
+                                    LOW (MAX ADD +1.25)
                                 </td>
-                                
+
                                 <td class="product">
                                     <a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))" class="product-name">@item.ProductName</a>
                                     @if (!string.IsNullOrEmpty(item.AttributeInfo))
@@ -289,6 +291,15 @@
                     </tbody>
                 </table>
             </div>
+            <div>
+
+                <button class="button-1 box-btn">
+                    Add 4 Boxes
+                </button>
+                <button class="button-1 box-btn">
+                    FOR $220 REBATE
+                </button>
+            </div>
             @if (Model.IsEditable && Model.Items.Count > 0 && Model.DisplayTaxShippingInfo)
             {
                 var inclTax = await workContext.GetTaxDisplayTypeAsync() == TaxDisplayType.IncludingTax;
@@ -304,7 +315,7 @@
                     <div class="common-buttons">
                         <button type="submit" name="updatecart" id="updatecart" class="button-2 update-cart-button" style="display: none;">@T("ShoppingCart.UpdateCart")</button>
 
-                      @*   @await Component.InvokeAsync(typeof(ShoppingCartEstimateShippingViewComponent)) *@
+                        @*   @await Component.InvokeAsync(typeof(ShoppingCartEstimateShippingViewComponent)) *@
                     </div>
                 }
                 @if (Model.IsEditable)
@@ -315,16 +326,16 @@
             </div>
             <div class="cart-footer">
                 @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryCartFooter, additionalData = Model })
-              @*   @if (Model.IsEditable)
-                {
-                    <div class="cart-collaterals">
-                        <div class="deals">
-                            @await Html.PartialAsync("_DiscountBox", Model.DiscountBox)
-                            @await Html.PartialAsync("_GiftCardBox", Model.GiftCardBox)
-                            @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals, additionalData = Model })
-                        </div>
-                    </div>
-                } *@
+                @*   @if (Model.IsEditable)
+            {
+            <div class="cart-collaterals">
+            <div class="deals">
+            @await Html.PartialAsync("_DiscountBox", Model.DiscountBox)
+            @await Html.PartialAsync("_GiftCardBox", Model.GiftCardBox)
+            @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals, additionalData = Model })
+            </div>
+            </div>
+            } *@
                 <div class="totals">
                     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryTotals, additionalData = Model })
                     @await Component.InvokeAsync(typeof(OrderTotalsViewComponent), new { isEditable = Model.IsEditable })
@@ -389,6 +400,7 @@
                                         });
                                     });
                                 </script>
+
                                 if (orderSettings.CheckoutDisabled)
                                 {
                                     <div class="checkout-disabled">
