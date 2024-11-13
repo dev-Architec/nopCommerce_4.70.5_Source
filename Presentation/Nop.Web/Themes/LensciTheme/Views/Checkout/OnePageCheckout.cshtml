@@ -49,10 +49,10 @@
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OpcContentBefore, additionalData = Model })
         <ol class="opc" id="checkout-steps">
             <li id="opc-billing" class="tab-section allow">
-                <div class="step-title">
+               @*  <div class="step-title">
                     <span class="number">@billingAddressStepNumber</span>
                     <h2 class="title">@T("Checkout.BillingAddress")</h2>
-                </div>
+                </div> *@
                 <div id="checkout-step-billing" class="step a-item" style="display: none;">
                     <form id="co-billing-form" action="" method="post">
                         <div id="checkout-billing-load">
@@ -80,10 +80,10 @@
             @if (Model.ShippingRequired)
             {
                 <li id="opc-shipping" class="tab-section">
-                    <div class="step-title">
+                    @* <div class="step-title">
                         <span class="number">@shippingAddressStepNumber</span>
                         <h2 class="title">@T("Checkout.ShippingAddress")</h2>
-                    </div>
+                    </div> *@
                     <div id="checkout-step-shipping" class="step a-item" style="display: none;">
                         <form action="" id="co-shipping-form" method="post">
                             <div id="checkout-shipping-load">
@@ -114,10 +114,10 @@
                     </div>
                 </li>
                 <li id="opc-shipping_method" class="tab-section">
-                    <div class="step-title">
+                    @* <div class="step-title">
                         <span class="number">@shippingMethodStepNumber</span>
                         <h2 class="title">@T("Checkout.ShippingMethod")</h2>
-                    </div>
+                    </div> *@
                     <div id="checkout-step-shipping-method" class="step a-item" style="display: none;">
                         <form id="co-shipping-method-form" action="" method="post">
                             <div id="checkout-shipping-method-load">
@@ -142,10 +142,10 @@
                 </li>
             }
             <li id="opc-payment_method" class="tab-section">
-                <div class="step-title">
+                @* <div class="step-title">
                     <span class="number">@paymentMethodStepNumber</span>
                     <h2 class="title">@T("Checkout.PaymentMethod")</h2>
-                </div>
+                </div> *@
                 <div id="checkout-step-payment-method" class="step a-item" style="display: none;">
                     <form action="" id="co-payment-method-form" method="post">
                         <div id="checkout-payment-method-load">
@@ -169,10 +169,10 @@
                 </div>
             </li>
             <li id="opc-payment_info" class="tab-section">
-                <div class="step-title">
+               @*  <div class="step-title">
                     <span class="number">@paymentInfoStepNumber</span>
                     <h2 class="title">@T("Checkout.PaymentInfo")</h2>
-                </div>
+                </div> *@
                 <div id="checkout-step-payment-info" class="step a-item" style="display: none;">
                     <form action="" id="co-payment-info-form" method="post">
                         <div id="checkout-payment-info-load">
@@ -192,10 +192,10 @@
                 </div>
             </li>
             <li id="opc-confirm_order" class="tab-section">
-                <div class="step-title">
+               @*  <div class="step-title">
                     <span class="number">@confirmOrderStepNumber</span>
                     <h2 class="title">@T("Checkout.ConfirmOrder")</h2>
-                </div>
+                </div> *@
                 <div id="checkout-step-confirm-order" class="step a-item" style="display: none;">
                     <div id="checkout-confirm-order-load">
                         @*confirm order content will be loaded here*@
