@@ -226,11 +226,5 @@
         }
     </script>
 </div>
+@await Component.InvokeAsync(typeof(OrderSummaryViewComponent));
 
-@{
-    await Html.RenderPartialAsync("_CartBadge");
-}
-@{
-    await Html.RenderPartialAsync("_FAQ_nav");
-
-}
