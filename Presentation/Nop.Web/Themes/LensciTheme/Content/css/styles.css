@@ -82,7 +82,7 @@ body {
     overflow-x: hidden;
     background-color: #fff;
     font: normal 14px Open Sans, sans-serif, Helvetica, sans-serif;
-    color: #777;
+    color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2579,33 +2579,40 @@ margin: 0 0 10px;
 
 .product-specs-box {
 margin: 0 0 40px;
+background: none;
 }
 
-.product-specs-box td {
-    border: none;
-    padding: 10px 0px;
-    font-size: 18px;
-}
-.product-specs-box td.spec-name {
-    font-weight: bold;
-}
+    .product-specs-box td {
+        border: none;
+        padding: 10px 0px;
+        font-size: 18px;
+        background: none;
+    }
+        .product-specs-box td.spec-name {
+            font-weight: bold;
+            background: none;
+        }
 
-.product-specs-box tr {
-    border-bottom: 1px dashed #CED4D9;
-}
+    .product-specs-box tr {
+        border-bottom: 1px dashed #CED4D9;
+        background: none;
+    }
 .product-details-block td.spec-group-name {
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
+    background: none;
 }
 .product-specs-box td.spec-group-name {
     border: 0;
     padding-top: 20px;
     color: #333;
+    background: none;
 }
 
 .product-tags-list {
-font-size: 0;
+    font-size: 0;
+    background: none;
 }
 
 .product-tags-list li {
@@ -2630,7 +2637,18 @@ line-height: 24px;
 .attributes {
 margin: 20px 0;
 }
+.product-collateral {
+    padding: 40px 20px;
+    background: #F2F2F2;
+}
 
+.product-details-block h2 {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: normal;
+    color: #333;
+    padding: 0 0 10px;
+}
 .attributes dl {
 overflow: hidden;
 padding: 0 2px; /* fix for Chrome in Mac, the checkboxes get cut off */
@@ -9330,7 +9348,9 @@ text-align: left;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    padding-bottom: 10px;
+    position: relative;
+    gap: 15px;
 }
 
 .manufacturer-row-page .page-title {
@@ -9338,23 +9358,24 @@ text-align: left;
 }
 
 .manufacturer-box {
-    flex: 0 0 auto;
-    width: 120px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-right: 15px;
-    background-color: #fff;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow .3s ease;
     text-align: center;
+    width: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-    .manufacturer-box:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.manufacturer-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .manufacturer-item {
     text-align: center;
+    padding: 10px;
+    display: inline-block;
 }
 
 .manufacturer-title {
@@ -9362,6 +9383,7 @@ text-align: left;
     font-weight: bold;
     margin-top: 5px;
     margin-bottom: 5px;
+    display: none;
 }
 
     .manufacturer-title a {
@@ -9370,22 +9392,21 @@ text-align: left;
         transition: color 0.3s ease;
     }
 
-        .manufacturer-title a:hover,
-        .manufacturer-title a:focus {
-            color: #248ece;
-        }
+    .manufacturer-title a:hover,
+    .manufacturer-title a:focus {
+        color: #248ece;
+    }
 
 .manufacturer-picture {
-    background-color: #f9f9f9;
-    border-radius: 5px;
     overflow: hidden;
 }
 
     .manufacturer-picture img {
-        width: 100%;
         height: auto;
         border-radius: 5px;
-        transition: transform 0.3s ease;
+        transition: transform .3s ease;
+        max-height: 105px;
+        max-width: 100%;
     }
 
 
@@ -11372,7 +11393,7 @@ select, input[type="text"] {
 .manufacturer-row-page .ghost.all-brands {
     display: block;
     max-width: 285px;
-    margin: 45px auto 0 auto;
+    margin: 30px auto 0 auto;
 }
 
 .category-grid.home-page-category-grid, .manufacturer-row-page, .home-page-product-grid, .news-list-homepage {
@@ -11525,4 +11546,243 @@ select, input[type="text"] {
     color: #333;
     display: block;
     font-size: 12px;
+}
+
+.contact_list {
+    background: #F7F7F7;
+    box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    padding: 10px;
+    position: absolute;
+    top: calc(100% - 10px);
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    column-count: 3;
+    border: none;
+    font-size: 18px;
+    line-height: 40px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.manufacturer-box:hover .contact_list {
+    display: block;
+}
+
+.manufacturer-box .contact_list .list_item a:hover {
+    color: #cc0005;
+}
+.footer-lower a {
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.related-products-grid.product-grid {
+    background: linear-gradient(180deg, #f7f7f7 0%, #fff 230px);
+}
+
+#faq {
+    padding: 40px;
+}
+
+@media only screen and (max-width: 863px) {
+    #faq {
+        padding: 0 20px;
+        margin: 0 0 40px 0
+    }
+}
+
+#faq h2 {
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #CED4D9;
+    margin: 0
+}
+
+@media only screen and (max-width: 863px) {
+    #faq h2 {
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: normal;
+        text-align: center
+    }
+}
+
+#faq .faq {
+    border-bottom: 1px solid #CED4D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 0 10px 0
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq {
+        padding: 0 0 15px 0
+    }
+}
+
+#faq .faq .question {
+    font-size: 18px;
+    padding: 15px 0 5px 50px;
+    width: 100%
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq .faq .question {
+        font-size: 20px;
+        padding: 15px 0 10px 50px
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq .question {
+        padding: 10px 0 0 25px;
+        font-size: 16px
+    }
+}
+
+#faq .faq .question p {
+    font-size: 18px;
+    display: inline-block;
+    margin: 0
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq .faq .question p {
+        font-size: 20px;
+        line-height: 30px
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq .question p {
+        font-size: 16px
+    }
+}
+
+#faq .faq .question:before {
+    content: '\f054';
+    font-weight: bold;
+    display: block;
+    float: left;
+    margin: 0 0 0 -35px;
+    font-size: 18px;
+    font-family: "Font Awesome 5 Free";
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq .faq .question:before {
+        font-size: 24px;
+        margin: 4px 0 0 -35px
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq .question:before {
+        position: absolute;
+        margin: 0 0 0 -20px
+    }
+}
+
+#faq .faq .question.opened {
+    background: #F7F7F7;
+    margin: 0 0 5px 0;
+    padding: 15px 0 15px 50px
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq .question.opened {
+        padding: 10px 0 10px 25px
+    }
+}
+
+#faq .faq .question.opened + .answers p {
+    margin: 0 0 15px 0
+}
+
+    #faq .faq .question.opened + .answers p:last-child {
+        margin: 0
+    }
+
+#faq .faq .answers {
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5em;
+    display: inline-block;
+    padding: 0 0 0 50px;
+    margin: 0;
+    width: 100%
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq .faq .answers {
+        font-size: 20px;
+        line-height: 30px
+    }
+}
+
+@media only screen and (max-width: 863px) {
+    #faq .faq .answers {
+        padding: 5px 0 0 25px;
+        font-size: 16px;
+        width: 100%
+    }
+}
+
+#faq .faq .answers p {
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq .faq .answers p {
+        font-size: 20px;
+        line-height: 30px
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    #faq .faq .answers p {
+        font-size: 16px;
+        line-height: 24px
+    }
+}
+
+#faq .faq .answers p:last-child {
+    margin: 0
+}
+
+#faq .faq .answers .read_more, #faq .faq .answers .read_less, #faq .faq .answers .read_less_end {
+    font-weight: bold;
+    white-space: nowrap
+}
+
+#faq .faq .shorten-toggle {
+    font-weight: bold
+}
+
+#faq h2 {
+    color: #333;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+    padding-bottom: 15px;
+}
+
+@media only screen and (min-width: 1700px) {
+    #faq h2 {
+        font-size: 32px;
+        line-height: 32px;
+    }
 }

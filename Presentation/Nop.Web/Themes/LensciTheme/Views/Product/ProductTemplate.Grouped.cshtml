@@ -95,6 +95,11 @@
                     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
                 </div>
                 @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
+                
+                @{
+                    await Html.RenderPartialAsync("_whyLensci");
+                }
+                
                 <div class="product-collateral">
                     <div class="product-details-block">
                     @if (!string.IsNullOrEmpty(Model.FullDescription))
@@ -195,9 +200,7 @@
                     @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecificationModel)
                     @await Html.PartialAsync("_ProductTags", Model.ProductTags)
                 </div>
-                @{
-                    await Html.RenderPartialAsync("_whyLensci");
-                }
+                
                 @*we do not display "also purchased" for grouped products
                     @await Component.InvokeAsync(typeof(ProductsAlsoPurchasedViewComponent), new { productId = Model.Id })*@
                 @await Component.InvokeAsync(typeof(RelatedProductsViewComponent), new { productId = Model.Id })

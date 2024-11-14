@@ -157,12 +157,19 @@
                     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
                 </div>
                 @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
+
+                @{
+                    await Html.RenderPartialAsync("_whyLensci");
+                }
+                
+
                 <div class="product-collateral">
 
                     @if (!string.IsNullOrEmpty(Model.FullDescription))
                     {
                         <div class="product-details-block">
                             <div class="full-description">
+                                <h2>Product Information</h2>
                                 @Html.Raw(Model.FullDescription)
                             </div>
                         </div>
@@ -173,9 +180,7 @@
                         @await Html.PartialAsync("_ProductTags", Model.ProductTags)
                     </div>
                 </div>
-                @{
-                    await Html.RenderPartialAsync("_whyLensci");
-                }
+               
                 @{
                     await Html.RenderPartialAsync("_FAQ_Product");
                 }
