@@ -70,8 +70,10 @@
     {
         <div class="product-page-size">
             <span>@T("Catalog.PageSize")</span>
+            <div class="page-size-select">
             @Html.DropDownList("products-pagesize", Model.PageSizeOptions, new { aria_label = T("Catalog.PageSize.Label") })
             <span>@T("Catalog.PageSize.PerPage")</span>
+            </div>
         </div>
         <script asp-location="Footer">
             $(function() {

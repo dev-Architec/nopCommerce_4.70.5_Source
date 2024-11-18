@@ -11,7 +11,8 @@
 @inject MediaSettings mediaSettings
 @inject OrderSettings orderSettings
 
-<div class="order-summary-content">
+<div class="order-summary-content" id="shopping_cart">
+    <div class="cart_wrap">
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentBefore, additionalData = Model })
     @await Html.PartialAsync("_OrderReviewData", Model.OrderReviewData)
     @if (Model.Items.Count > 0)
@@ -27,254 +28,24 @@
                 </ul>
             </div>
         }
-        @await Html.PartialAsync("_StepContainer")
-        ;
+        @await Html.PartialAsync("_StepContainer");
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
             <div class="table-wrapper">
-                <table class="cart">
-                    <colgroup>
-                        @if (Model.ShowSku)
-                        {
-                            <col width="1" />
-                        }
-                        @if (Model.ShowProductImages)
-                        {
-                            <col width="1" />
-                        }
-                        <col />
-                        @if (Model.ShowVendorName)
-                        {
-                            <col width="1" />
-                        }
-                        <col width="1" />
-                        <col width="1" />
-                        <col width="1" />
-                        @if (Model.IsEditable)
-                        {
-                            <col width="1" />
-                        }
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            @*  @if (Model.ShowSku)
-                        {
-                        <th class="sku">
-                        @T("ShoppingCart.SKU")
-                        </th>
-                        } *@
-                            @if (Model.ShowProductImages)
-                            {
-                                <th class="product-picture">
-                                    @T("ShoppingCart.Image")
-                                </th>
-                            }
-                            <th>
-
-                            </th>
-                            <th>
-                                BC
-                            </th>
-                            <th>
-                                DIA
-                            </th>
-                            <th>
-                                Power
-                            </th>
-                            <th>
-                                Addition
-                            </th>
-
-                            <th class="product">
-                                @T("ShoppingCart.Product(s)")
-                            </th>
-                            @if (Model.ShowVendorName)
-                            {
-                                <th class="vendor">
-                                    @T("ShoppingCart.VendorName")
-                                </th>
-                            }
-
-                            <th class="unit-price">
-                                @T("ShoppingCart.UnitPrice")
-                            </th>
-                            <th class="quantity">
-                                @T("ShoppingCart.Quantity")
-                            </th>
-                            <th class="subtotal">
-                                @T("ShoppingCart.ItemTotal")
-                            </th>
-                            @if (Model.IsEditable)
-                            {
-                                <th class="remove-from-cart">
-                                    @T("ShoppingCart.Remove")
-                                </th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="cart_items">
+                   
                         @foreach (var item in Model.Items)
                         {
-                            <tr>
-                                @*  @if (Model.ShowSku)
-                        {
-                        <td class="sku">
-                        <label class="td-title">@T("ShoppingCart.SKU"):</label>
-                        <span class="sku-number">@item.Sku</span>
-                        </td>
-                        } *@
-                                @if (Model.ShowProductImages)
-                                {
-                                    <td class="product-picture">
-                                        <a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))">
-                                            <img alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" width="@mediaSettings.DefaultImageQuality" />
-                                        </a>
-                                    </td>
-                                }
-                                <td>
-                                    Right Eye (OD)
-                                    <br />
-                                    Left Eye (OD)
-                                </td>
-                                <td>
-                                    8.7
-                                    <br />
-                                    8.7
-                                </td>
-                                <td>
-                                    14.0
-                                    <br />
-                                    8.7
-                                </td>
-                                <td>
-                                    9.75
-                                    <br />
-                                    8.7
-                                </td>
-                                <td>
-                                    LOW (MAX ADD +1.25)
-                                    <br />
-                                    LOW (MAX ADD +1.25)
-                                </td>
+                            <div class="cart_item">
+                                <div class="inner">
+                            <div class="cart_item_header">
 
-                                <td class="product">
-                                    <a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))" class="product-name">@item.ProductName</a>
-                                    @if (!string.IsNullOrEmpty(item.AttributeInfo))
-                                    {
-                                        <div class="attributes">
-                                            @Html.Raw(item.AttributeInfo)
-                                        </div>
-                                    }
-                                    @if (!string.IsNullOrEmpty(item.RecurringInfo))
-                                    {
-                                        <div class="recurring-info">
-                                            @Html.Raw(item.RecurringInfo)
-                                        </div>
-                                    }
-                                    @if (!string.IsNullOrEmpty(item.RentalInfo))
-                                    {
-                                        <div class="rental-info">
-                                            @Html.Raw(item.RentalInfo)
-                                        </div>
-                                    }
-                                    @if (Model.IsEditable && item.AllowItemEditing)
-                                    {
-                                        var editCartItemUrl = Url.RouteUrl<Product>(new { SeName = item.ProductSeName }, webHelper.GetCurrentRequestProtocol());
-                                        editCartItemUrl = webHelper.ModifyQueryString(editCartItemUrl, "updatecartitemid", item.Id.ToString());
-                                        <div class="edit-item">
-                                            <a href="@editCartItemUrl">@T("Common.Edit")</a>
-                                        </div>
-                                    }
-                                    @if (item.Warnings.Count > 0)
-                                    {
-                                        <div class="message-error">
-                                            <ul>
-                                                @foreach (var warning in item.Warnings)
-                                                {
-                                                    <li>@Html.Raw(warning)</li>
-                                                }
-                                            </ul>
-                                        </div>
-                                    }
-                                </td>
-                                @if (Model.ShowVendorName)
-                                {
-                                    <td class="vendor">
-                                        <label class="td-title">@T("ShoppingCart.VendorName"):</label>
-                                        <span class="vendor-name">@item.VendorName</span>
-                                    </td>
-                                }
-                                <td class="unit-price">
-                                    <label class="td-title">@T("ShoppingCart.UnitPrice"):</label>
-                                    <span class="product-unit-price">@item.UnitPrice</span>
-                                </td>
-                                <td class="quantity">
-                                    <label class="td-title" for="itemquantity@(item.Id)">@T("ShoppingCart.Quantity"):</label>
-                                    @if (Model.IsEditable)
-                                    {
-                                        if (item.AllowedQuantities.Count > 0)
-                                        {
-                                            <select name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" class="qty-dropdown">
-                                                @foreach (var qty in item.AllowedQuantities)
-                                                {
-                                                    <option selected="@qty.Selected" value="@qty.Value">@qty.Value</option>
-                                                }
-                                            </select>
-                                        }
-                                        else
-                                        {
-                                            <div class="product-quantity">
-                                                <div class="quantity up" id="quantity-up-@(item.Id)"></div>
-                                                <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" aria-label="@T("ShoppingCart.Quantity")" onchange="$('#updatecart').trigger('click');" />
-                                                <div class="quantity down" id="quantity-down-@(item.Id)"></div>
-                                            </div>
-                                            <script asp-location="Footer">
-                                                $(function () {
-                                                    $('#quantity-up-@(item.Id)').on('click',
-                                                        function (e) {
-                                                            var input = $(document).find('#itemquantity@(item.Id)');
-                                                            var oldValue = parseInt(input.val());
-                                                            var newVal = oldValue + 1;
-                                                            input.val(newVal.toString());
-                                                            input.trigger("change");
-                                                        });
-
-                                                    $('#quantity-down-@(item.Id)').on('click',
-                                                        function (e) {
-                                                            var input = $(document).find('#itemquantity@(item.Id)');
-                                                            var oldValue = parseInt(input.val());
-                                                            var newVal = oldValue - 1;
-                                                            input.val(newVal.toString());
-                                                            input.trigger("change");
-                                                        });
-                                                });
-                                            </script>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <span class="product-quantity">@item.Quantity</span>
-                                    }
-                                </td>
-                                <td class="subtotal">
-                                    <label class="td-title">@T("ShoppingCart.ItemTotal"):</label>
-                                    <span class="product-subtotal">@item.SubTotal</span>
-                                    @if (!string.IsNullOrEmpty(item.Discount))
-                                    {
-                                        <div class="discount">
-                                            @T("ShoppingCart.ItemYouSave", item.Discount)
-                                        </div>
-                                        if (item.MaximumDiscountedQty.HasValue)
-                                        {
-                                            <div class="discount-additional-info">
-                                                @T("ShoppingCart.MaximumDiscountedQty", item.MaximumDiscountedQty.Value)
-                                            </div>
-                                        }
-                                    }
-                                </td>
-                                @if (Model.IsEditable)
-                                {
-                                    <td class="remove-from-cart">
+                                <h3><a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))" class="product-name">@item.ProductName</a></h3>
+                                <div class="tools">
+                                    <div class="edit"><a class="edit_link" href="javascript:void(0);"><i class="fa fa-pencil-alt" aria-hidden="true"></i>Update Dr</a></div>
+                                    <span class="divider"> | </span>
+                                    <a class="update modlink fancy" href="#"><i class="fa fa-pencil"></i>Update Rx</a>
+                                    <span class="remove hide">
                                         @if (item.DisableRemoval)
                                         {
                                             <text>&nbsp;</text>
@@ -282,23 +53,279 @@
                                         else
                                         {
                                             <input type="checkbox" name="removefromcart" id="removefromcart@(item.Id)" value="@(item.Id)" aria-label="@T("ShoppingCart.Remove")" />
-                                            <button type="button" name="updatecart" class="remove-btn" onclick="$('#removefromcart@(item.Id)').attr('checked', true); $('#updatecart').trigger('click');"></button>
+                                            <button type="button" name="updatecart" class="remove-btn" onclick="$('#removefromcart@(item.Id)').attr('checked', true); $('#updatecart').trigger('click');">Remove</button>
                                         }
-                                    </td>
-                                }
-                            </tr>
+
+                                    </span>
+                                    <span class="divider"> | </span>
+                                    <div class="remove">
+                                        @if (item.DisableRemoval)
+                                        {
+                                            <text>&nbsp;</text>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" name="removefromcart" id="removefromcart@(item.Id)" value="@(item.Id)" aria-label="@T("ShoppingCart.Remove")" />
+                                            <button type="button" name="updatecart" class="remove-btn" onclick="$('#removefromcart@(item.Id)').attr('checked', true); $('#updatecart').trigger('click');">
+                                                <i class="fa fa-times"></i>Remove
+                                            </button>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cart_item_main with_savings">
+                                <div class="cart_item_img">
+                                    <a href="@(Url.RouteUrl<Product>(new { SeName = item.ProductSeName }))">
+                                        <img class="cartprodimg" alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" width="@mediaSettings.DefaultImageQuality" />
+                                    </a>
+                                </div>
+                                <div class="cart_item_info ">
+                                    <table>
+                                        <tbody>
+                                            <tr class="head">
+                                                <th class="first"></th>
+                                                <th class="base curve">BC</th>
+                                                <th class="diameter">DIA</th>
+                                                <th class="power">Power</th>
+                                            </tr>
+                                            <tr class="righteye">
+                                                <th class="eye">
+                                                    Right Eye (OD)
+                                                </th>
+                                                <td class="base curve"><span class="mobile-title">BC</span>8.6</td>
+                                                <td class="diameter"><span class="mobile-title">DIA</span>14.2</td>
+                                                <td class="power"><span class="mobile-title">Power</span>-4.75</td>
+                                            </tr>
+                                            <tr class="lefteye">
+                                                <th class="eye">
+                                                    Left Eye (OS)
+                                                </th>
+                                                <td class="base curve"><span class="mobile-title">BC</span>8.6</td>
+                                                <td class="diameter"><span class="mobile-title">DIA</span>14.2</td>
+                                                <td class="power"><span class="mobile-title">Power</span>-10.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="cart_item_pricing ">
+                                    <table>
+                                        <tbody>
+                                            <tr class="head">
+                                                <th class="price">Price</th>
+                                                <th class="qty">QTY</th>
+                                                <th class="total">Total</th>
+                                            </tr>
+                                            <tr class="righteye">
+                                                <td class="price after_rebate">
+                                                    <span class="mobile-title">Price</span>
+                                                    <span class="after-rebate">
+                                                        @item.UnitPrice
+                                                        <span class="after_rebate">after rebate</span>
+                                                    </span>
+                                                </td>
+                                                <td class="qty">
+                                                    <span class="label">
+                                                        @if (Model.IsEditable)
+                                                        {
+                                                            if (item.AllowedQuantities.Count > 0)
+                                                            {
+                                                                <select name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" class="qty-dropdown">
+                                                                    @foreach (var qty in item.AllowedQuantities)
+                                                                    {
+                                                                        <option selected="@qty.Selected" value="@qty.Value">@qty.Value</option>
+                                                                    }
+                                                                </select>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="product-quantity">
+                                                                    <div class="quantity up" id="quantity-up-@(item.Id)"></div>
+                                                                    <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" aria-label="@T("ShoppingCart.Quantity")" onchange="$('#updatecart').trigger('click');" />
+                                                                    <div class="quantity down" id="quantity-down-@(item.Id)"></div>
+                                                                </div>
+                                                                <script asp-location="Footer">
+                                                                    $(function () {
+                                                                        $('#quantity-up-@(item.Id)').on('click',
+                                                                            function (e) {
+                                                                                var input = $(document).find('#itemquantity@(item.Id)');
+                                                                                var oldValue = parseInt(input.val());
+                                                                                var newVal = oldValue + 1;
+                                                                                input.val(newVal.toString());
+                                                                                input.trigger("change");
+                                                                            });
+
+                                                                        $('#quantity-down-@(item.Id)').on('click',
+                                                                            function (e) {
+                                                                                var input = $(document).find('#itemquantity@(item.Id)');
+                                                                                var oldValue = parseInt(input.val());
+                                                                                var newVal = oldValue - 1;
+                                                                                input.val(newVal.toString());
+                                                                                input.trigger("change");
+                                                                            });
+                                                                    });
+                                                                </script>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="product-quantity">@item.Quantity</span>
+                                                        }
+                                                    </span>
+                                                </td>
+                                                <td class="total after_rebate">
+                                                    <span class="mobile-title">Total</span>
+                                                    <span class="after-rebate">
+                                                        @item.SubTotal
+                                                        @if (!string.IsNullOrEmpty(item.Discount))
+                                                        {
+                                                            <div class="discount">
+                                                                @T("ShoppingCart.ItemYouSave", item.Discount)
+                                                            </div>
+                                                            if (item.MaximumDiscountedQty.HasValue)
+                                                            {
+                                                                <div class="discount-additional-info">
+                                                                    @T("ShoppingCart.MaximumDiscountedQty", item.MaximumDiscountedQty.Value)
+                                                                </div>
+                                                            }
+                                                        }
+                                                        <span class="after_rebate">after rebate</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="lefteye">
+                                                <td class="price after_rebate">
+                                                    <span class="mobile-title">Price</span>
+                                                    <span class="after-rebate">
+                                                        @item.UnitPrice
+                                                        <span class="after_rebate">after rebate</span>
+                                                    </span>
+                                                </td>
+                                                <td class="qty">
+                                                    <span class="label">
+                                                        @if (Model.IsEditable)
+                                                        {
+                                                            if (item.AllowedQuantities.Count > 0)
+                                                            {
+                                                                <select name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" class="qty-dropdown">
+                                                                    @foreach (var qty in item.AllowedQuantities)
+                                                                    {
+                                                                        <option selected="@qty.Selected" value="@qty.Value">@qty.Value</option>
+                                                                    }
+                                                                </select>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="product-quantity">
+                                                                    <div class="quantity up" id="quantity-up-@(item.Id)"></div>
+                                                                    <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" aria-label="@T("ShoppingCart.Quantity")" onchange="$('#updatecart').trigger('click');" />
+                                                                    <div class="quantity down" id="quantity-down-@(item.Id)"></div>
+                                                                </div>
+                                                                <script asp-location="Footer">
+                                                                    $(function () {
+                                                                        $('#quantity-up-@(item.Id)').on('click',
+                                                                            function (e) {
+                                                                                var input = $(document).find('#itemquantity@(item.Id)');
+                                                                                var oldValue = parseInt(input.val());
+                                                                                var newVal = oldValue + 1;
+                                                                                input.val(newVal.toString());
+                                                                                input.trigger("change");
+                                                                            });
+
+                                                                        $('#quantity-down-@(item.Id)').on('click',
+                                                                            function (e) {
+                                                                                var input = $(document).find('#itemquantity@(item.Id)');
+                                                                                var oldValue = parseInt(input.val());
+                                                                                var newVal = oldValue - 1;
+                                                                                input.val(newVal.toString());
+                                                                                input.trigger("change");
+                                                                            });
+                                                                    });
+                                                                </script>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="product-quantity">@item.Quantity</span>
+                                                        }
+                                                    </span>
+                                                </td>
+                                                <td class="total after_rebate">
+                                                    <span class="mobile-title">Total</span>
+                                                    <span class="after-rebate">
+                                                        @item.SubTotal
+                                                        @if (!string.IsNullOrEmpty(item.Discount))
+                                                        {
+                                                            <div class="discount">
+                                                                @T("ShoppingCart.ItemYouSave", item.Discount)
+                                                            </div>
+                                                            if (item.MaximumDiscountedQty.HasValue)
+                                                            {
+                                                                <div class="discount-additional-info">
+                                                                    @T("ShoppingCart.MaximumDiscountedQty", item.MaximumDiscountedQty.Value)
+                                                                </div>
+                                                            }
+                                                        }
+                                                        <span class="after_rebate">after rebate</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="mobile_tools">
+                                    <a class="update modlink fancy" href="#"><i class="fa fa-pencil"></i>Update Rx</a>
+                                    <a class="update modlink fancy" href="#"><i class="fa fa-pencil"></i>Update Rx</a>
+                                </div>
+
+                                <div class="rebateoffercontainer">
+                                    <div class="rebateoffer rebateoffercontainer ro554">
+                                        <div class="rebate-widget checkoutbadge">
+                                            <div class="header">
+                                                <div class="rebate_discount">
+                                                    <i class="fas fa-check"></i>
+                                                    <span class="lead_text">YOU'RE SAVING $85</span>
+                                                </div>
+                                                <div class="rebate_quantity">
+                                                    <span class="desc_text">WITH A <strong>4</strong> BOX ORDER</span>
+                                                    <span class="fancy">After Rebate</span>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                         }
-                    </tbody>
-                </table>
+                        <div class="cart-options">
+                            <div id="special_offers">
+                                <div class="heading">
+                                    <h2>Free with Purchase</h2>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="offer">
+                                    <span class="descripion">FREE Lens Case ($2.99 value)</span>
+                                    <img class="lens-case" src="/images/thumbs/0000026_asus-n551jk-xo076h-laptop_80.jpeg" alt="Free Lens Case">
+                                    <div class="subtotal">
+                                        <span class="promo-free">FREE</span>
+                                    </div>
+                                    <div class="tools">
+                                        <span class="del">
+                                            <a href="#" onclick="AreYouSure('https://www.lens.com/common/secure/xt_orderform_delitem.asp?basketitemid=155793168&amp;SetC=Y'); return false;">Remove</a>
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
             <div>
-
-                <button class="button-1 box-btn">
-                    Add 4 Boxes
-                </button>
-                <button class="button-1 box-btn">
-                    FOR $220 REBATE
-                </button>
             </div>
             @if (Model.IsEditable && Model.Items.Count > 0 && Model.DisplayTaxShippingInfo)
             {
@@ -309,21 +336,7 @@
                     @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteTopicUrl("shippinginfo"))
                 </div>
             }
-            <div class="cart-options">
-                @if (Model.IsEditable)
-                {
-                    <div class="common-buttons">
-                        <button type="submit" name="updatecart" id="updatecart" class="button-2 update-cart-button" style="display: none;">@T("ShoppingCart.UpdateCart")</button>
-
-                        @*   @await Component.InvokeAsync(typeof(ShoppingCartEstimateShippingViewComponent)) *@
-                    </div>
-                }
-                @if (Model.IsEditable)
-                {
-                    @await Html.PartialAsync("_CheckoutAttributes", Model)
-                }
-                @await Component.InvokeAsync(typeof(SelectedCheckoutAttributesViewComponent))
-            </div>
+            
             <div class="cart-footer">
                 @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryCartFooter, additionalData = Model })
                 @*   @if (Model.IsEditable)
@@ -336,49 +349,10 @@
             </div>
             </div>
             } *@
-                <div class="totals">
-                    @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryTotals, additionalData = Model })
-                    @await Component.InvokeAsync(typeof(OrderTotalsViewComponent), new { isEditable = Model.IsEditable })
+                    <div class="form-footer">
+                   
                     @if (Model.IsEditable)
                     {
-                        if (!string.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
-                        {
-                            <div class="min-amount-warning">
-                                @Model.MinOrderSubtotalWarning
-                            </div>
-                        }
-                    }
-                    @if (Model.IsEditable)
-                    {
-                        if (Model.TermsOfServiceOnShoppingCartPage)
-                        {
-                            <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display: none;">
-                                <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
-                            </div>
-                            <div class="terms-of-service">
-                                <input id="termsofservice" type="checkbox" name="termsofservice" />
-                                <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
-                                @if (Model.TermsOfServicePopup)
-                                {
-                                    <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
-                                    <script asp-location="Footer">
-                                        $(function () {
-                                            $('#read-terms').on('click',
-                                                function (e) {
-                                                    e.preventDefault();
-                                                    displayPopupContentFromUrl(
-                                                        '@Url.RouteUrl("TopicPopup", new { SystemName = "conditionsofuse" })',
-                                                        '@T("Checkout.TermsOfService")');
-                                                });
-                                        });
-                                    </script>
-                                }
-                                else
-                                {
-                                    <a class="read" id="read-terms" href="@Url.RouteTopicUrl("conditionsofuse")">@T("Checkout.TermsOfService.Read")</a>
-                                }
-                            </div>
-                        }
                         <div class="checkout-buttons">
                             @if (string.IsNullOrEmpty(Model.MinOrderSubtotalWarning) && !Model.HideCheckoutButton)
                             {
@@ -409,9 +383,9 @@
                                 }
                                 else
                                 {
-                                    <button type="submit" name="continueshopping" class="button-2 continue-shopping-button">@T("ShoppingCart.ContinueShopping")</button>
+                                        <button type="submit" name="continueshopping" class="btn color2">@T("ShoppingCart.ContinueShopping")</button>
 
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="button-1 checkout-button">
+                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="btn color1">
                                         @T("Checkout.Button")
                                     </button>
                                 }
@@ -443,7 +417,7 @@
 
     }
     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.OrderSummaryContentAfter, additionalData = Model })
-
+    </div>
     @{
         await Html.RenderPartialAsync("_CartBadge");
     }
