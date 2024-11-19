@@ -15800,3 +15800,115 @@ select, input[type="text"] {
         font-size: 26px;
     }
 }
+
+.input-group .inputs input, .input-group .inputs select {
+    font-size: 16px;
+    padding-top: 10px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 50px;
+    width: 100%;
+    line-height: normal;
+    background-clip: padding-box !important;
+    -webkit-transition: border-color ease-in-out;
+    -webkit-transition-delay: .15s;
+    transition: border-color .15s ease-in-out;
+    box-shadow: none;
+}
+
+.input-group .inputs span.required {
+    display: none;
+}
+
+.input-group .inputs label {
+    cursor: text;
+    white-space: nowrap;
+    color: #999;
+    font-size: 13px;
+    position: absolute;
+    top: 26px;
+    left: 0;
+    transform: translate(10px, -50%);
+    transition: all .2s;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    width: 100%;
+    text-align: left;
+}
+
+@media only screen and (min-width: 1700px) {
+    .input-group .inputs label {
+        font-size: 20px;
+        top: 30px;
+    }
+
+    .input-group .inputs input, .input-group .inputs select {
+        font-size: 20px;
+        padding-top: 15px;
+        height: 64px;
+    }
+}
+
+.input-group .inputs:has(input:focus) label {
+    color: #CC0005;
+    font-size: 13px;
+    z-index: 9;
+    top: 16px;
+}
+
+.input-group .inputs span.field-validation-error {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    margin: 0;
+    font-size: 0;
+}
+
+    .input-group .inputs span.field-validation-error:before {
+        content: "!";
+        color: #e4434b;
+        font-size: 20px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+.input-group .inputs:has([aria-invalid="false"]) label {
+    font-size: 13px;
+    z-index: 9;
+    top: 16px;
+    color: #999;
+}
+
+.input-group .inputs:has(.field-validation-error) input {
+    border: 1px solid #e4434b;
+    margin: 0;
+    background: #FCF2F2;
+    border-color: #CC0005;
+    color: #CC0005;
+}
+
+.input-group .inputs {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-items: flex-start;
+    padding: 0;
+    width: 100%;
+    margin: 0 0 10px 0;
+    gap: 10px;
+}
